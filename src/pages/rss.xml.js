@@ -13,5 +13,9 @@ export async function GET(context) {
       ...post.data,
       link: `/blog/${post.id}/`,
     })),
+    customData: `<atom:link href="${new URL("rss.xml", context.site)}" rel="self" type="application/rss+xml" />`,
+    xmlns: {
+      atom: "http://www.w3.org/2005/Atom",
+    },
   });
 }
