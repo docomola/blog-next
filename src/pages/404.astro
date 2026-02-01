@@ -74,7 +74,7 @@ const locale = config.lang || "zh-Hant";
           </p>
           <p>{i18n(I18nKey.notfound_bsod_description_2)}</p>
           <p id="failed-item" class="break-all">
-            {i18n(I18nKey.notfound_bsod_failed_item)}:
+            {i18n(I18nKey.notfound_bsod_failed_item)}
           </p>
         </div>
       </div>
@@ -140,7 +140,7 @@ const locale = config.lang || "zh-Hant";
   if (descriptionElement) descriptionElement.textContent = description;
   if (failedItemElement) {
     const urlPath = url.toLowerCase().replace(/^https?:\/\//, "");
-    failedItemElement.textContent = `${i18n_failed_item}: ${urlPath}　.lnk`;
+    failedItemElement.textContent = `${i18n_failed_item}${urlPath}.lnk`;
   }
 
   // 模擬進度條
