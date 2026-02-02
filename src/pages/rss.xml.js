@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import config from "@shConfig";
 
 export async function GET(context) {
   // RSS feed 只顯示非 draft 文章
@@ -19,10 +20,16 @@ export async function GET(context) {
             length: 0,
           }
         : undefined,
+      content: config.behavior.rss.protectContent
+        ? post.body.slice(0, 50) + (post.body.length > 50 ? "..." : "")
+        : post.body,
     })),
     customData: `<atom:link href="${new URL("rss.xml", context.site)}" rel="self" type="application/rss+xml" />`,
     xmlns: {
       atom: "http://www.w3.org/2005/Atom",
     },
+    stylesheet: config.behavior.rss.enableStylesheet
+      ? "/rss/styles.xsl"
+      : undefined,
   });
 }
