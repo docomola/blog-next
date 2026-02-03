@@ -36,3 +36,5 @@ public/assets/blog/*
 
 # CloudFlare Wrangler
 .wrangler/*
+
+public/_headers
