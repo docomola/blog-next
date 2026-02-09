@@ -14,38 +14,38 @@ import type { APIRoute } from "astro";
 // Edit this file with your own information, and have fun building your website!
 const humansTxt = `
 /* TEAM */
-  Developer: Your Name (Or your nickname)
-  Site: your-portfolio-link.com
-  Twitter: @your_handle
-  GitHub: ://github.com
-  Location: Taipei, Taiwan
+	Developer: Your Name (Or your nickname)
+	Site: your-portfolio-link.com
+	Twitter: @your_handle
+	GitHub: ://github.com
+	Location: Taipei, Taiwan
 
 /* THANKS */
-  /* You can write something here to thank people who contributed to the website, such as open source projects, libraries, or individuals who helped you. */
-  /* Uhhh...like...the author who made this theme? */
+	/* You can write something here to thank people who contributed to the website, such as open source projects, libraries, or individuals who helped you. */
+	/* Uhhh...like...the author who made this theme? */
 
 /* SITE */
-  Last update: ${new Date().toISOString().split("T")[0].replaceAll("-", "/")}
-  Language: ${config.lang}
-  Theme: SHBlog Next
-  Framework: Astro
-  UI Library: React
-  Styling: Tailwind CSS
-  Components: shadcn/ui (Radix UI primitives)
-  Icons: Lucide React
-  Typography: Inter, Noto Sans TC
-  Standards: HTML5, CSS3, TypeScript
-  Software: VS Code, Prettier
+	Last update: ${new Date().toISOString().split("T")[0].replaceAll("-", "/")}
+	Language: ${config.lang}
+	Theme: SHBlog Next
+	Framework: Astro
+	UI Library: React
+	Styling: Tailwind CSS
+	Components: shadcn/ui (Radix UI primitives)
+	Icons: Lucide React
+	Typography: Inter, Noto Sans TC
+	Standards: HTML5, CSS3, TypeScript
+	Software: VS Code, Prettier
 
 /* THANKS */
-  Astro Community: For the incredible performance and DX.
-  shadcn: For the beautiful, accessible UI components.
-  Open Source: To everyone contributing to the web ecosystem.
-  SHBlog Next: For being an amazing starter theme that made this project possible.
+	Astro Community: For the incredible performance and DX.
+	shadcn: For the beautiful, accessible UI components.
+	Open Source: To everyone contributing to the web ecosystem.
+	SHBlog Next: For being an amazing starter theme that made this project possible.
 
 /* NOTE */
-  /* You can write something here to provide additional information about the website, such as the purpose of the website, the technologies used, or any other relevant information that you want to share with your visitors. */
-  /* For example, you can write something like "This website is a personal portfolio that showcases my projects and skills as a developer. It is built using Astro, React, and Tailwind CSS, and it is designed to be fast, responsive, and accessible." */
+	/* You can write something here to provide additional information about the website, such as the purpose of the website, the technologies used, or any other relevant information that you want to share with your visitors. */
+	/* For example, you can write something like "This website is a personal portfolio that showcases my projects and skills as a developer. It is built using Astro, React, and Tailwind CSS, and it is designed to be fast, responsive, and accessible." */
 `;
 
 export const GET: APIRoute = ({ site }) => {
