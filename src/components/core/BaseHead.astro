@@ -68,8 +68,25 @@ const FAVICON = config.favicon || "/favicon.svg";
 {config.style.enableTransitions && <ClientRouter />}
 
 <!-- Google Tag Manager -->
-<script is:inline type="text/partytown">
+<script
+  is:inline
+  id="sh-header-gtm"
+  type="text/partytown"
+  data-gtmid={config.behavior.gtmConfig.googleTagManagerId}
+>
+  // 取得GTM ID
+  const thisScript = document.getElementById("sh-header-gtm");
+
+  if (!thisScript) {
+    console.error("GTM script element not found.");
+    throw new Error("GTM script element not found.");
+  }
+  const gtmId = thisScript.dataset.gtmid;
+  console.log("GTM ID:", gtmId);
+
+  // Google Tag Manager Code
   (function (w, d, s, l, i) {
+    // GTM Code
     w[l] = w[l] || [];
     w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
     var f = d.getElementsByTagName(s)[0],
@@ -78,13 +95,7 @@ const FAVICON = config.favicon || "/favicon.svg";
     j.async = true;
     j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
     f.parentNode.insertBefore(j, f);
-  })(
-    window,
-    document,
-    "script",
-    "dataLayer",
-    config.behavior.gtmConfig.googleTagManagerId,
-  );
+  })(window, document, "script", "dataLayer", gtmId);
 </script>
 <!-- End Google Tag Manager -->
 
