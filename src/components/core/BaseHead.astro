@@ -69,33 +69,25 @@ const FAVICON = config.favicon || "/favicon.svg";
 
 <!-- Google Tag Manager -->
 <script
-  is:inline
+  type="text/partytown"
+  src={`https://www.googletagmanager.com/gtag/js?id=${config.behavior.gtmConfig.googleTagManagerId}`}
+></script>
+<script
   id="sh-header-gtm"
   type="text/partytown"
-  data-gtmid={config.behavior.gtmConfig.googleTagManagerId}
+  define:vars={{ gtmId: config.behavior.gtmConfig.googleTagManagerId }}
 >
-  // 取得GTM ID
-  const thisScript = document.getElementById("sh-header-gtm");
-
-  if (!thisScript) {
-    console.error("GTM script element not found.");
-    throw new Error("GTM script element not found.");
-  }
-  const gtmId = thisScript.dataset.gtmid;
+  // 檢查GTM ID
   console.log("GTM ID:", gtmId);
 
   // Google Tag Manager Code
-  (function (w, d, s, l, i) {
-    // GTM Code
-    w[l] = w[l] || [];
-    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-    var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s),
-      dl = l != "dataLayer" ? "&l=" + l : "";
-    j.async = true;
-    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-    f.parentNode.insertBefore(j, f);
-  })(window, document, "script", "dataLayer", gtmId);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    dataLayer.push(arguments);
+  };
+  gtag("js", new Date());
+
+  gtag("config", gtmId);
 </script>
 <!-- End Google Tag Manager -->
 
