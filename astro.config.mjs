@@ -2,7 +2,6 @@
 
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
@@ -61,12 +60,6 @@ export default defineConfig({
     }),
     react(),
     pagefind(),
-    partytown({
-      // Optional: Add config options here
-      config: {
-        forward: ["dataLayer.push", "gtag"],
-      },
-    }),
     metaTags(),
     devtoolBreakpoints(),
   ],
