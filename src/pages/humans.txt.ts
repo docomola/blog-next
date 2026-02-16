@@ -17,7 +17,7 @@ const humansTxt = `
 	Developer: Your Name (Or your nickname)
 	Site: your-portfolio-link.com
 	Twitter: @your_handle
-	GitHub: ://github.com
+	GitHub: https://github.com/yourusername
 	Location: Taipei, Taiwan
 
 /* THANKS */
