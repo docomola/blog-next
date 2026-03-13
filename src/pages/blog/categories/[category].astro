@@ -104,7 +104,7 @@ const years = Object.keys(postsByYear).sort(
 
                 {/* 時間線 */}
                 <div class="relative pl-8 border-l-2 border-gray-200 dark:border-gray-700">
-                  {yearPosts.map((post: any, index: number) => {
+                  {yearPosts.map((post: any, _index: number) => {
                     const month = new Date(post.data.pubDate)
                       .toLocaleDateString("zh-TW", {
                         month: "2-digit",
