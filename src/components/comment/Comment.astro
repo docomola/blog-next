@@ -75,7 +75,7 @@ if (import.meta.env.DEV && UTTERANCES_ENABLED) {
         }
       </style>
 
-      <script define:vars={{ UTTERANCES_CONFIG }}>
+      <script is:inline define:vars={{ UTTERANCES_CONFIG }}>
         const script = document.createElement("script");
 
         script.type = "text/javascript";
