@@ -280,6 +280,14 @@ const config: ShBlogConfig = {
       siteUrl: "https://emtech.cc/",
       tags: ["技術", "個人網站", "生活"],
     },
+    {
+      title: "JN",
+      imgUrl:
+        "https://www.gravatar.com/avatar/6b4acff32864e0e522937ec26e016709db956e97f199b46968e0ddc7ce6b79e8",
+      desc: "資工系畢業，但其實沒有很會寫程式",
+      siteUrl: "https://blog.giveanornot.com/",
+      tags: ["技術", "生活"],
+    },
   ],
 
   // 其他行為設定
