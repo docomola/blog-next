@@ -44,7 +44,7 @@ pnpm preview
 
 ## ✨ 功能特色
 
-- [x] 基於 Astro v5 打造
+- [x] 基於 Astro v6 打造
 - [x] 支援 Markdown 與 MDX 內容撰寫
 - [x] 完全面向深色主題設計
 - [x] 響應式圖片處理
