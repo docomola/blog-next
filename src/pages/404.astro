@@ -92,6 +92,7 @@ const locale = config.lang || "zh-Hant";
 </html>
 
 <script
+  is:inline
   define:vars={{
     notfound_finished_percent_description: i18n(
       I18nKey.notfound_finished_percent_description,
@@ -105,7 +106,6 @@ const locale = config.lang || "zh-Hant";
 >
   // 彩蛋邏輯
   const url = window.location.href;
-  const random = Math.random();
 
   let qr_img = "/assets/layouts/404/404_qr.svg";
   let description =

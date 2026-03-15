@@ -6,7 +6,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 import remarkDirective from "remark-directive"; /* Handle directives */
-import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
@@ -75,10 +74,14 @@ export default defineConfig({
         "@lib": path.resolve(__dirname, "./src/lib"),
       },
     },
+    optimizeDeps: {
+      include: ["astro/toolbar"],
+    },
   },
 
   experimental: {
     svgo: true,
+    // rustCompiler: true,    // 啟用 Rust 編譯器以提升構建性能（需要安裝 @astrojs/compiler-rs 包）
   },
 
   markdown: {

@@ -48,6 +48,6 @@ const humansTxt = `
 	/* For example, you can write something like "This website is a personal portfolio that showcases my projects and skills as a developer. It is built using Astro, React, and Tailwind CSS, and it is designed to be fast, responsive, and accessible." */
 `;
 
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = () => {
   return new Response(humansTxt);
 };

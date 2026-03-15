@@ -10,7 +10,7 @@ const excludeHtmlTags = ["code", "pre", "kbd", "samp", "var", "tt"]; // 排除�
 export default function rehypePangu() {
   return (tree) => {
     // 遍歷所有節點，僅處理 'text' 類型的節點
-    visit(tree, "text", (node, index, parent) => {
+    visit(tree, "text", (node, _index, parent) => {
       // console.log("rehype-pangu processing text node:", node.value);
 
       // 避免在特定標籤內處理文本，如 <code>、<pre>、<kbd>

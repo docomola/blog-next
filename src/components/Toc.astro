@@ -123,7 +123,7 @@ const tocTree = headings.reduce(
   }
 </div>
 
-<script define:vars={{ minDepth }}>
+<script is:inline define:vars={{ minDepth }}>
   let currentH2Index = null;
 
   // 設置標題的滾動邊距，防止被 TOC 卡住
