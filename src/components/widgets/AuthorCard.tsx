@@ -41,7 +41,7 @@ const DynamicIcon = ({
     return lazy(() =>
       import("@icons-pack/react-simple-icons")
         .then((mod) => {
-          const componentName = `Si${iconName}`;
+          const componentName = getSimpleIconComponentName(iconName);
           const Icon = mod[componentName as keyof typeof mod];
           if (!Icon) throw new Error(`Icon ${componentName} not found`);
           return { default: Icon as React.ComponentType<any> };
