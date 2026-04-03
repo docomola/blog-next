@@ -47,11 +47,13 @@
   animation: 200ms ease vt-fade-in-up both;
 }
 
-/* Header: 保持靜止，不執行過渡動畫 */
-::view-transition-old(header) {
+/* Header&Footer: 保持靜止，不執行過渡動畫 */
+::view-transition-old(header),
+::view-transition-old(footer) {
   animation: none;
 }
-::view-transition-new(header) {
+::view-transition-new(header),
+::view-transition-new(footer) {
   animation: none;
 }
 
