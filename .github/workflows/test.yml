@@ -13,12 +13,12 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install dependencies
-        run: npm install
       - name: Install pnpm
         uses: pnpm/action-setup@v5
         with:
           version: 10
+      - name: Install dependencies
+        run: pnpm install
 
   astro-test:
     needs: initialize
