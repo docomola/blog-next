@@ -74,7 +74,7 @@ const currentPage = Number(Astro.url.searchParams.get("page")) || 1;
   <!-- Main content section -->
   <BaseMainContent>
     <!-- Main column: Blog posts grid -->
-    <div class="flex-1">
+    <div class="flex-1" transition:name="main-content">
       <BlogList currentPage={currentPage} />
     </div>
 
