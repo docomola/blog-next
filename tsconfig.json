@@ -12,6 +12,7 @@
       "@/*": ["./src/*"],
       "@shConfig": ["./shblog.config.ts"],
       "@ui/*": ["./src/components/ui/*"],
+      "@shComponents/*": ["./src/components/post/*"],
       "@components/*": ["./src/components/*"],
       "@lib/*": ["./src/lib/*"],
       "@consts": ["./src/consts.ts"],
