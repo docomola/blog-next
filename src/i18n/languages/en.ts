@@ -46,4 +46,6 @@ export const en: Translation = {
   [Key.empty_blog_title]: "Where is the post?",
   [Key.empty_blog_description]:
     "Seems there is no post that is available to use, maybe you can create one... or copy some?",
+  [Key.empty_blog_refresh]: "Refresh",
+  [Key.empty_blog_docs]: "Learn More",
 };

@@ -43,4 +43,6 @@ export const zh_TW: Translation = {
   [Key.empty_blog_title]: "文章在哪裡？",
   [Key.empty_blog_description]:
     "似乎沒有可用的文章，也許你可以建立一個... 或者複製一些過來？",
+  [Key.empty_blog_refresh]: "重新整理",
+  [Key.empty_blog_docs]: "了解更多",
 };

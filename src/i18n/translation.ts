@@ -9,7 +9,7 @@ export type Translation = {
   [K in I18nKey]: string;
 };
 
-const defaultTranslation = zh_TW;
+const defaultTranslation = en;
 
 const map: { [key: string]: Translation } = {
   // 建立語言代碼與翻譯檔的對應關係

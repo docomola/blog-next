@@ -36,6 +36,8 @@ enum I18nKey {
   // 部落格集合為空的通知訊息
   empty_blog_title = "Where is the post?",
   empty_blog_description = "Seems there is no post that is available to use, maybe you can create one... or copy some?",
+  empty_blog_refresh = "Refresh",
+  empty_blog_docs = "Learn More",
 }
 
 export default I18nKey;
