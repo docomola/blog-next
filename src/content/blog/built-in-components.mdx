@@ -1,0 +1,57 @@
+---
+title: 內建組件
+description: SHBlog Next 提供了一些內建組件，讓你可以輕鬆地在文章中使用它們來增強內容的表達力。這些組件包括清單、程式碼區塊、步驟指示器等等。以下是一些常用的內建組件介紹。
+pubDate: 2026-04-04T12:41:05.257Z
+tags:
+  - 技巧
+category:
+  - Astro預設文章
+---
+
+import Steps from "@shComponents/Steps/Steps.astro";
+import Step from "@shComponents/Steps/Step.astro";
+
+## 步驟指示器
+
+- **位置：**
+  - `src/components/core/Steps.astro`
+  - `src/components/core/Step.astro`
+- **引入路徑：**
+  - `@shComponents/Steps/Steps.astro`
+  - `@shComponents/Steps/Step.astro`
+- **參數：**
+  | 組件 | 參數名稱 | 類型 | 說明 |
+  | --- | --- | --- | --- |
+  | `<Steps />` | `start` | number | 指定步驟指示器的起始步驟編號，預設為 1。 |
+  | `<Steps />` | `class` | string | 額外的 CSS Class，可以用來自定義步驟指示器的樣式。 |
+  | `<Step />` |`title` | string | 步驟的標題，將顯示在步驟指示器中。 |
+
+你可以使用 `Steps` 和 `Step` 組件來創建一個步驟指示器，這對於展示流程或指南非常有用。
+
+```astro
+<Steps start={3}>
+  <Step title="第一步">這是第一步的描述</Step>
+  <Step title="第二步">這是第二步的描述</Step>
+  <Step title="第三步">
+    這是第三步的描述，你可以在這裡添加更多的內容來說明這一步驟。
+    <ol>
+      <li>這是一個清單，對你可以用清單</li>
+      <li>但是必須手動添加 HTML 標籤哦</li>
+    </ol>
+  </Step>
+</Steps>
+```
+
+<Steps start={3}>
+  <Step title="第一步">這是第一步的描述</Step>
+  <Step title="第二步">這是第二步的描述</Step>
+  <Step title="第三步">
+    這是第三步的描述，你可以在這裡添加更多的內容來說明這一步驟。
+    <ol>
+      <li>這是一個清單，對你可以用清單</li>
+      <li>但是必須手動添加 HTML 標籤哦</li>
+    </ol>
+  </Step>
+</Steps>
+
+這將會渲染一個包含三個步驟的指示器，每個步驟都有標題和描述。你可以根據需要添加更多的步驟，或者自定義每個步驟的內容。
