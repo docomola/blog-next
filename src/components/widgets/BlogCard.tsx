@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import config from "@shConfig";
 import { CalendarDaysIcon } from "@ui/animated/calendar-days.tsx";
 
+import { navigate } from "astro:transitions/client";
+
 interface BlogCardProps {
   title: string;
   description?: string;
@@ -44,7 +46,11 @@ export default function BlogCard({
   }, [pubDate]);
 
   const handleCardClick = () => {
-    window.location.href = href;
+    if (config.style.enableTransitions) {
+      navigate(href);
+    } else {
+      window.location.href = href;
+    }
   };
 
   const handleCategoryClick = (e: React.MouseEvent) => {
