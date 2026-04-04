@@ -5,16 +5,24 @@ import {
   ChevronRight,
 } from "@lucide/astro";
 
+import { cn } from "@/lib/utils";
+
 interface Props {
   name: string;
   defaultOpen?: boolean;
+  highlighted?: boolean;
 }
-const { name, defaultOpen = false } = Astro.props;
+const { name, defaultOpen = false, highlighted = false } = Astro.props;
 // 產生唯一 ID 以供腳本控管
 const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<div class="folder-root select-none">
+<div
+  class={cn(
+    "folder-root select-none px-2",
+    highlighted && "bg-green-500/10 rounded border border-green-400/20",
+  )}
+>
   <button
     type="button"
     class="folder-trigger w-full flex items-center py-1.5 hover:text-white transition-colors text-left"
@@ -28,11 +36,11 @@ const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
 
     <div class="relative w-5 h-5 mr-2">
       <FolderIcon
-        class="folder-icon-close absolute w-5 h-5 text-blue-400 transition-opacity duration-300"
+        class="folder-icon-close absolute w-5 h-5 text-neutral-400 transition-opacity duration-300"
         style={defaultOpen ? "opacity: 0" : "opacity: 1"}
       />
       <FolderOpenIcon
-        class="folder-icon-open absolute w-5 h-5 text-blue-400 transition-opacity duration-300"
+        class="folder-icon-open absolute w-5 h-5 text-green-400 transition-opacity duration-300"
         style={defaultOpen ? "opacity: 1" : "opacity: 0"}
       />
     </div>
