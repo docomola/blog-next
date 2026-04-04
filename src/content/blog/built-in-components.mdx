@@ -11,6 +11,10 @@ category:
 import Steps from "@shComponents/Steps/Steps.astro";
 import Step from "@shComponents/Steps/Step.astro";
 
+import Files from "@shComponents/Files/Files.astro";
+import Folder from "@shComponents/Files/Folder.astro";
+import File from "@shComponents/Files/File.astro";
+
 ## 步驟指示器
 
 - **位置：**
@@ -55,3 +59,21 @@ import Step from "@shComponents/Steps/Step.astro";
 </Steps>
 
 這將會渲染一個包含三個步驟的指示器，每個步驟都有標題和描述。你可以根據需要添加更多的步驟，或者自定義每個步驟的內容。
+
+## 檔案架構
+
+<Files>
+  <Folder name="app" defaultOpen>
+    <File name="layout.tsx" />
+    <File name="page.tsx" />
+    <File name="global.css" />
+  </Folder>
+
+<Folder name="components">
+  <File name="button.tsx" />
+  <File name="tabs.tsx" />
+  <File name="dialog.tsx" />
+</Folder>
+
+  <File name="package.json" />
+</Files>
