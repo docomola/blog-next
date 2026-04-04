@@ -1,5 +1,4 @@
 ---
-// 匯入所需的 Lucide 圖示
 import {
   Folder as FolderIcon,
   FolderOpen as FolderOpenIcon,
@@ -11,36 +10,53 @@ interface Props {
   defaultOpen?: boolean;
 }
 const { name, defaultOpen = false } = Astro.props;
+// 產生唯一 ID 以供腳本控管
+const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<details class="group select-none" open={defaultOpen}>
-  <summary
-    class="flex items-center cursor-pointer list-none py-1.5 hover:text-white transition-colors"
+<div class="folder-root select-none">
+  <button
+    type="button"
+    class="folder-trigger w-full flex items-center py-1.5 hover:text-white transition-colors text-left"
+    data-target={folderId}
+    aria-expanded={defaultOpen ? "true" : "false"}
   >
     <ChevronRight
-      class="w-4 h-4 mr-1 text-gray-600 group-open:rotate-90 transition-transform"
+      class="w-4 h-4 mr-1 text-gray-600 transition-transform duration-300"
+      style={defaultOpen ? "transform: rotate(90deg)" : ""}
     />
 
     <div class="relative w-5 h-5 mr-2">
       <FolderIcon
-        class="absolute w-5 h-5 text-blue-400 opacity-100 group-open:opacity-0 transition-opacity"
+        class="folder-icon-close absolute w-5 h-5 text-blue-400 transition-opacity duration-300"
+        style={defaultOpen ? "opacity: 0" : "opacity: 1"}
       />
       <FolderOpenIcon
-        class="absolute w-5 h-5 text-blue-400 opacity-0 group-open:opacity-100 transition-opacity"
+        class="folder-icon-open absolute w-5 h-5 text-blue-400 transition-opacity duration-300"
+        style={defaultOpen ? "opacity: 1" : "opacity: 0"}
       />
     </div>
 
-    <span class="font-medium">{name}</span>
-  </summary>
+    <span class="font-medium text-gray-300">{name}</span>
+  </button>
 
-  <div class="pl-6 border-l border-white/10 ml-[7px]">
-    <slot />
+  <div
+    id={folderId}
+    class="folder-content overflow-hidden transition-[max-height] duration-300 ease-in-out"
+    style={defaultOpen ? "max-height: 1000px;" : "max-height: 0px;"}
+    hidden={!defaultOpen}
+  >
+    <div class="pl-6 border-l border-white/10 ml-[7px]">
+      <slot />
+    </div>
   </div>
-</details>
+</div>
 
 <style>
-  /* 隱藏原生摘要箭頭 */
-  summary::-webkit-details-marker {
-    display: none;
+  .folder-trigger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
   }
 </style>

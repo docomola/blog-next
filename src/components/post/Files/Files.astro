@@ -7,9 +7,52 @@ const { class: className } = Astro.props;
 
 <div
   class:list={[
-    "file-tree-container font-mono text-sm border border-white/10 rounded-lg bg-[#0F0F0F] p-5 text-gray-300",
+    "file-tree-container font-mono text-sm border border-white/10 rounded-lg bg-[#0F0F0F] p-5",
     className,
   ]}
 >
   <slot />
 </div>
+
+<script is:inline>
+  document.querySelectorAll(".folder-trigger").forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const target = document.getElementById(targetId);
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      const chevron = button.querySelector(".lucide-chevron-right");
+      const iconClose = button.querySelector(".folder-icon-close");
+      const iconOpen = button.querySelector(".folder-icon-open");
+
+      if (!isExpanded) {
+        // --- 執行展開 ---
+        target.removeAttribute("hidden");
+        // 強制 reflow
+        void target.offsetHeight;
+        target.style.maxHeight = "1000px";
+
+        // 更新狀態
+        button.setAttribute("aria-expanded", "true");
+        if (chevron) chevron.style.transform = "rotate(90deg)";
+        if (iconClose) iconClose.style.opacity = "0";
+        if (iconOpen) iconOpen.style.opacity = "1";
+      } else {
+        // --- 執行收合 ---
+        target.style.maxHeight = "0px";
+        button.setAttribute("aria-expanded", "false");
+
+        if (chevron) chevron.style.transform = "rotate(0deg)";
+        if (iconClose) iconClose.style.opacity = "1";
+        if (iconOpen) iconOpen.style.opacity = "0";
+
+        // 動態結束後隱藏元素，優化性能與無障礙
+        setTimeout(() => {
+          if (button.getAttribute("aria-expanded") === "false") {
+            target.setAttribute("hidden", "");
+          }
+        }, 300); // 對應 duration-300
+      }
+    });
+  });
+</script>
