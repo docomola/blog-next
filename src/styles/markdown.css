@@ -63,7 +63,7 @@
 /* 列表樣式 */
 #post-content ul,
 #post-content ol {
-  @apply list-inside marker:text-white/30 pl-[30px];
+  @apply list-outside marker:text-white/30 pl-[30px];
 }
 
 #post-content li {
