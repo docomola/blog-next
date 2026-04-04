@@ -1,6 +1,6 @@
 ---
-title: Third post
-description: Lorem ipsum dolor sit amet
+title: Lorem ipsum dolor sit amet
+description: This is a sample blog post to demonstrate the layout and styling of the blog. It shows how your English content will look like when published on there.
 pubDate: Jul 22 2022
 heroImage: ../../assets/blog-placeholder-2.jpg
 category: ["範例分類"]

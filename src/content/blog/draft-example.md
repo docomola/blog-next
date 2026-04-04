@@ -1,6 +1,6 @@
 ---
-title: 這是一篇草稿文章
-description: 這篇文章只在開發環境可見
+title: 建立一篇草稿文章
+description: 有時候你可能想先撰寫一篇草稿文章，這樣你就可以在開發環境中預覽它，而不會意外發布到生產環境。以下是如何在 SHBlog Next 中建立一篇草稿文章的指南。
 pubDate: 2025-12-28T03:56:51.357Z
 heroImage: ../../assets/blog-placeholder-3.jpg
 tags:
