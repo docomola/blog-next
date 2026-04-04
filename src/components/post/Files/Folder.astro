@@ -1,0 +1,46 @@
+---
+// 匯入所需的 Lucide 圖示
+import {
+  Folder as FolderIcon,
+  FolderOpen as FolderOpenIcon,
+  ChevronRight,
+} from "@lucide/astro";
+
+interface Props {
+  name: string;
+  defaultOpen?: boolean;
+}
+const { name, defaultOpen = false } = Astro.props;
+---
+
+<details class="group select-none" open={defaultOpen}>
+  <summary
+    class="flex items-center cursor-pointer list-none py-1.5 hover:text-white transition-colors"
+  >
+    <ChevronRight
+      class="w-4 h-4 mr-1 text-gray-600 group-open:rotate-90 transition-transform"
+    />
+
+    <div class="relative w-5 h-5 mr-2">
+      <FolderIcon
+        class="absolute w-5 h-5 text-blue-400 opacity-100 group-open:opacity-0 transition-opacity"
+      />
+      <FolderOpenIcon
+        class="absolute w-5 h-5 text-blue-400 opacity-0 group-open:opacity-100 transition-opacity"
+      />
+    </div>
+
+    <span class="font-medium">{name}</span>
+  </summary>
+
+  <div class="pl-6 border-l border-white/10 ml-[7px]">
+    <slot />
+  </div>
+</details>
+
+<style>
+  /* 隱藏原生摘要箭頭 */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
