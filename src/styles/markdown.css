@@ -14,7 +14,16 @@
 
 /* 預設 */
 #post-content
-  *:not(:last-child, :only-child, li, pre, code, .expressive-code *) {
+  *:not(
+    :last-child,
+    :only-child,
+    li,
+    pre,
+    code,
+    .expressive-code *,
+    .step-item,
+    .step-line
+  ) {
   @apply mb-4;
 }
 
