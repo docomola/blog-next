@@ -46,6 +46,11 @@ const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
     </div>
 
     <span class="font-medium text-gray-300">{name}</span>
+
+    <div
+      class="parent-highlight-indicator hidden w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] ml-2"
+    >
+    </div>
   </button>
 
   <div
@@ -66,5 +71,13 @@ const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
     border: none;
     cursor: pointer;
     outline: none;
+  }
+
+  /* 核心邏輯：如果 folder-root 內部的 folder-content 包含任何被高亮的元素 */
+  /* 則顯示該層級 trigger 內的綠點 */
+  .folder-root:has(.folder-content .is-highlighted)
+    > .folder-trigger
+    .parent-highlight-indicator {
+    display: block;
   }
 </style>
