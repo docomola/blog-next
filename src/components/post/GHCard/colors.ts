@@ -1,5 +1,6 @@
 // GitHub 語言顏色對照表
 // 資料來源：osh (https://github.com/ozh/github-colors)
+// 授權條款：WTFPL (http://www.wtfpl.net/txt/copying/)
 
 export interface LanguageColor {
   color: string | null;
