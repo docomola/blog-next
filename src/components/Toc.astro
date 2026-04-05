@@ -3,6 +3,11 @@ import { Button } from "@ui/button";
 import { CardTitle } from "@ui/card";
 import { ChevronDown } from "lucide-react";
 
+import config from "@shConfig";
+
+import I18nKey from "@i18n/i18nKey";
+import i18n from "@i18n/translation";
+
 interface Props {
   headings: Array<{
     depth: number;
@@ -17,10 +22,6 @@ const { headings } = Astro.props;
 const cleanHeadingText = (text: string): string => {
   return text.replace("#", "").trim();
 };
-
-import config from "@shConfig";
-import I18nKey from "@i18n/i18nKey";
-import i18n from "@i18n/translation";
 
 // 構建樹形結構，根據 config 設定最小與最大深度
 const minDepth = config.behavior.tableOfContents.minDepth;
