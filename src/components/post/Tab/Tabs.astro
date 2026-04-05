@@ -1,81 +1,101 @@
 ---
-import { cn } from "@/lib/utils";
+import { cn } from "@lib/utils";
 
 interface Props {
-  labels: string[]; // 例如 ["Javascript", "Rust", "Typescript"]
+  labels: string[];
   class?: string;
 }
 
 const { labels, class: className } = Astro.props;
-const tabsId = `tabs-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <div
   class={cn(
-    "sh-builtin-components tabs-container my-6 border border-white/10 rounded-xl bg-[#0D1117] overflow-hidden",
+    "sh-builtin-components tabs-container my-6 rounded-lg overflow-hidden border border-white/10 bg-neutral-900",
     className,
   )}
-  data-tabs-id={tabsId}
 >
-  <div class="flex border-b border-white/10 bg-[#161B22] px-2">
+  <!-- 分頁選擇 -->
+  <div class="relative flex border-b border-white/10 px-2">
     {
       labels.map((label, index) => (
         <button
           type="button"
           class={cn(
-            "tab-button relative px-4 py-3 text-sm font-medium transition-all duration-200 outline-none",
+            "tab-button relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-300 outline-none",
             index === 0
-              ? "active text-blue-400"
+              ? "text-green-400"
               : "text-gray-400 hover:text-gray-200",
           )}
           data-index={index}
         >
           {label}
-          {/* 底部指示線 */}
-          <div
-            class={cn(
-              "tab-indicator absolute bottom-0 left-0 h-[2px] w-full bg-blue-500 transition-opacity duration-200",
-              index === 0 ? "opacity-100" : "opacity-0",
-            )}
-          />
         </button>
       ))
     }
+
+    <div
+      class="tab-sliding-line pointer-events-none absolute bottom-0 left-0 h-[2px] bg-green-500 transition-all duration-300 ease-out"
+      style="width: 0; transform: translateX(0);"
+    >
+    </div>
   </div>
 
-  <div class="tab-panels p-5">
+  <!-- 內容 -->
+  <div class="tab-panels px-5 pt-2 pb-5">
     <slot />
   </div>
 </div>
 
 <script is:inline>
-  (function setupTabs() {
+  (function setupSlidingTabs() {
     const containers = document.querySelectorAll(
-      ".tabs-container:not([data-initialized])",
+      ".tabs-container:not([data-initialized-sliding])",
     );
 
     containers.forEach((container) => {
-      container.setAttribute("data-initialized", "true");
+      container.setAttribute("data-initialized-sliding", "true");
+
       const buttons = container.querySelectorAll(".tab-button");
       const panels = container.querySelectorAll(".tab-panel");
+      const line = container.querySelector(".tab-sliding-line");
+
+      // 初始化底線位置
+      const updateLine = (btn) => {
+        line.style.width = `${btn.offsetWidth}px`;
+        line.style.transform = `translateX(${btn.offsetLeft}px)`;
+      };
+
+      // 預設選中第一個
+      if (buttons[0]) {
+        // 使用 requestAnimationFrame 確保在 DOM 完全渲染後計算位置
+        requestAnimationFrame(() => updateLine(buttons[0]));
+      }
 
       buttons.forEach((btn, idx) => {
         btn.addEventListener("click", () => {
-          // 切換按鈕狀態
           buttons.forEach((b) => {
-            b.classList.remove("text-blue-400", "active");
+            // 重置所有按鈕的顏色
+            b.classList.remove("text-green-400");
+            b.classList.add("hover:text-gray-200");
             b.classList.add("text-gray-400");
-            b.querySelector(".tab-indicator").style.opacity = "0";
           });
-
-          btn.classList.add("text-blue-400", "active");
+          // 設定當前按鈕的顏色
+          btn.classList.add("text-green-400");
           btn.classList.remove("text-gray-400");
-          btn.querySelector(".tab-indicator").style.opacity = "1";
+          btn.classList.remove("hover:text-gray-200");
 
-          // 切換面板顯示
+          updateLine(btn);
+
           panels.forEach((p) => p.classList.add("hidden"));
           panels[idx].classList.remove("hidden");
         });
+      });
+
+      // 視窗縮放時重新計算位置，防止跑版
+      window.addEventListener("resize", () => {
+        const activeBtn = container.querySelector(".tab-button.text-green-400");
+        if (activeBtn) updateLine(activeBtn);
       });
     });
   })();

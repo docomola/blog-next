@@ -25,11 +25,11 @@ const { class: className, path } = Astro.props;
   {
     path && (
       <div
-        class="flex gap-2 border-b border-white/10 px-5 py-3 select-none"
+        class="flex items-center justify-start gap-2 border-b border-white/10 px-5 py-3 select-none"
         title={path}
       >
-        <FolderIcon class="h-4 w-4 text-gray-500" />
-        <span class="sh-builtin-components text-xs text-gray-400">{path}</span>
+        <FolderIcon size={18} class="text-gray-500" />
+        <span class="sh-builtin-components text-sm text-gray-400">{path}</span>
       </div>
     )
   }
