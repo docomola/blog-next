@@ -52,4 +52,5 @@ export const zh_TW: Translation = {
   [Key.github_card_archive]: "封存儲存庫",
   [Key.github_card_no_description]: "儲存庫中並未提供描述",
   [Key.github_card_updated_at]: "更新於",
+  [Key.github_card_not_found]: "找不到所請求的儲存庫",
 };

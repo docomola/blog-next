@@ -45,6 +45,7 @@ enum I18nKey {
   github_card_archive = "Archive",
   github_card_no_description = "No description provided.",
   github_card_updated_at = "Updated at",
+  github_card_not_found = "Not Found",
 }
 
 export default I18nKey;

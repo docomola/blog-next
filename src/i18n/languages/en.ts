@@ -55,4 +55,5 @@ export const en: Translation = {
   [Key.github_card_archive]: "Archive",
   [Key.github_card_no_description]: "No description provided.",
   [Key.github_card_updated_at]: "Updated at",
+  [Key.github_card_not_found]: "Not Found",
 };
