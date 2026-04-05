@@ -22,7 +22,9 @@
     code,
     .expressive-code *,
     .steps-container *,
-    .file-tree-container *
+    .file-tree-container *,
+    .sh-builtin-components *,
+
   ) {
   @apply mb-4;
 }
