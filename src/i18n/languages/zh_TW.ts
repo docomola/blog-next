@@ -55,7 +55,8 @@ export const zh_TW: Translation = {
   [Key.github_card_not_found]: "找不到所請求的儲存庫",
 
   // 分頁（內建元件）
-  [Key.tabs_warning_multiple_default_open]: "發現 {count} 個預設開啟的分頁項目",
+  [Key.tabs_warning_multiple_default_open]:
+    "警告：發現 {count} 個預設開啟的分頁項目",
   [Key.tabs_multiple_default_open_description]:
     "在同一個分頁組件中，只有一個分頁項目可以預設開啟（傳送參數 defaultOpen）。",
 };
