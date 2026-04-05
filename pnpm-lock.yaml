@@ -34,7 +34,7 @@ importers:
         version: 5.2.10
       '@fontsource-variable/noto-serif-tc':
         specifier: ^5.2.10
-        version: 5.2.10
+        version: 5.2.11
       '@giscus/react':
         specifier: ^3.1.0
         version: 3.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -855,8 +855,8 @@ packages:
   '@fontsource-variable/noto-sans-tc@5.2.10':
     resolution: {integrity: sha512-COVssWiIp9VVfdGuHpbrcH8u9H5JK4Lm6U7oee2BD6aLwKzPshj49KGmmQe/r3Fcp4e4SSuCaqyN/BtDKxHOGQ==}
 
-  '@fontsource-variable/noto-serif-tc@5.2.10':
-    resolution: {integrity: sha512-JX/WfmSCYm5sRZkkEJs84AQttoOCRMA1makNHXRINmF6d836h3hO9yoMmFxTqNx0xd0zMcdXoL8AHVNxsCNYuQ==}
+  '@fontsource-variable/noto-serif-tc@5.2.11':
+    resolution: {integrity: sha512-omn0bOxO4hY9RUsygVEuCZ3zZYk4dwrDlgOKK9Sphr3QxNJ75f1YnrvLiUJCuD+knF9eZzJYlRqh/pYJHnS/lQ==}
 
   '@giscus/react@3.1.0':
     resolution: {integrity: sha512-0TCO2TvL43+oOdyVVGHDItwxD1UMKP2ZYpT6gXmhFOqfAJtZxTzJ9hkn34iAF/b6YzyJ4Um89QIt9z/ajmAEeg==}
@@ -4384,7 +4384,7 @@ snapshots:
 
   '@fontsource-variable/noto-sans-tc@5.2.10': {}
 
-  '@fontsource-variable/noto-serif-tc@5.2.10': {}
+  '@fontsource-variable/noto-serif-tc@5.2.11': {}
 
   '@giscus/react@3.1.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
