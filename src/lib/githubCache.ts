@@ -3,7 +3,17 @@ const githubCache = new Map<string, any>();
 
 export async function fetchRepoData(repo: string) {
   // 標準化 Repo 名稱作為 Key
-  const normalizedRepo = repo.toLowerCase().trim();
+  let normalizedRepo = repo.toLowerCase().trim();
+  if (normalizedRepo.startsWith("http")) {
+    try {
+      const url = new URL(normalizedRepo);
+      // 去除前面網址內容，只留下 owner/repo 部分
+      normalizedRepo = url.pathname.replace(/^\/+/, ""); // 移除開頭的斜線
+    } catch (error) {
+      console.warn(`Invalid URL provided: ${repo}`);
+      return null;
+    }
+  }
 
   // 如果快取中已有資料，直接回傳
   if (githubCache.has(normalizedRepo)) {
