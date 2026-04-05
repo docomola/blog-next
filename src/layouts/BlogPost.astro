@@ -63,7 +63,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
 
   <BaseMainContent>
     <!-- Main column: Blog post content -->
-    <article class="flex-1">
+    <article class="w-full flex-1 min-w-0 max-w-full">
       <div>
         <!-- 文章資訊 -->
         <div class="mb-4 flex gap-2">
@@ -125,15 +125,15 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
       <Comment />
     </article>
 
-    <!-- TOC Sidebar -->
-    <div>
+    <!-- Sidebar -->
+    <aside class="hidden shrink-0 lg:block lg:w-[380px]">
       <Sidebar />
       {
         headings?.length > 0 && config.behavior.tableOfContents.enable && (
           <Toc {headings} />
         )
       }
-    </div>
+    </aside>
   </BaseMainContent>
 </BaseLayout>
 
