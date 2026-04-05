@@ -18,8 +18,8 @@ import File from "@shComponents/Files/File.astro";
 ## 步驟指示器
 
 - **位置：**
-  - `src/components/core/Steps.astro`
-  - `src/components/core/Step.astro`
+  - `src/components/post/Steps/Steps.astro`
+  - `src/components/post/Steps/Step.astro`
 - **引入路徑：**
   - `@shComponents/Steps/Steps.astro`
   - `@shComponents/Steps/Step.astro`
@@ -62,16 +62,36 @@ import File from "@shComponents/Files/File.astro";
 
 ## 檔案架構
 
+- **位置：**
+  - `src/components/post/Files/Files.astro`
+  - `src/components/post/Files/Folder.astro`
+  - `src/components/post/Files/File.astro`
+- **引入路徑：**
+  - `@shComponents/Files/Files.astro`
+  - `@shComponents/Files/Folder.astro`
+  - `@shComponents/Files/File.astro`
+- **參數：**
+  | 組件 | 參數名稱 | 類型 | 說明 |
+  | --- | --- | --- | --- |
+  | `<Files />` | `path` | string | 指定文件樹的根路徑（可選）。 |
+  | `<Files />` | `class` | string | 額外的 CSS Class，可以用來自定義文件樹的樣式。 |
+  | `<Folder />` | `name` | string | 資料夾的名稱。 |
+  | `<Folder />` | `defaultOpen` | boolean | 指定資料夾是否預設展開（可選，預設為`False`）。 |
+  | `<Folder />` | `highlighted` | boolean | 指定資料夾是否高亮顯示（可選，預設為`False`）。 |
+  | `<File />` | `name` | string | 檔案的名稱。 |
+  | `<File />` | `icon` | FileIconType | 指定檔案圖示的類型（預設為`normal`，所有選項請參考下方資訊）。 |
+  | `<File />` | `highlighted` | boolean | 指定檔案是否高亮顯示（可選，預設為`False`。請注意，高亮檔案並不會因而將父資料夾一同高亮。如需高亮資料夾，請在 `<Folder />` 上使用 `highlighted` 屬性）。 |
+
 <Files path="/sh-blog-next/">
   <Folder name="app" defaultOpen>
     <File name="layout.tsx" icon="code" />
     <File name="page.tsx" />
-    <File name="global.css" />
+    <File name="global.css" highlighted />
   </Folder>
   <Folder name="components" highlighted>
     <File name="button.tsx" icon="code" />
     <File name="tabs.tsx" />
-    <File name="dialog.tsx" />
+    <File name="dialog.tsx" highlighted />
     <Folder name="core">
       <File name="Header.astro" />
       <File name="Footer.astro" />
