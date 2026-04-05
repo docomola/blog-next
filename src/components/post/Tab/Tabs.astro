@@ -2,11 +2,10 @@
 import { cn } from "@lib/utils";
 
 interface Props {
-  labels: string[];
   class?: string;
 }
 
-const { labels, class: className } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
 <div
@@ -15,84 +14,99 @@ const { labels, class: className } = Astro.props;
     className,
   )}
 >
-  <!-- 分頁選擇 -->
-  <div class="relative flex border-b border-white/10 px-2">
-    {
-      labels.map((label, index) => (
-        <button
-          type="button"
-          class={cn(
-            "tab-button relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-300 outline-none",
-            index === 0
-              ? "text-green-400"
-              : "text-gray-400 hover:text-gray-200",
-          )}
-          data-index={index}
-        >
-          {label}
-        </button>
-      ))
-    }
-
+  <div class="relative border-b border-white/10 bg-neutral-900/50">
     <div
-      class="tab-sliding-line pointer-events-none absolute bottom-0 left-0 h-[2px] bg-green-500 transition-all duration-300 ease-out"
-      style="width: 0; transform: translateX(0);"
+      class="tab-nav scrollbar-hide relative flex overflow-x-auto overflow-y-hidden px-2 whitespace-nowrap"
+      style="mask-image: linear-gradient(to right, black 90%, transparent 100%);"
     >
+      <div
+        class="tab-sliding-line pointer-events-none absolute bottom-0 left-0 h-[2px] bg-green-500 opacity-0 transition-all duration-300 ease-out"
+        style="width: 0; transform: translateX(0);"
+      >
+      </div>
     </div>
   </div>
 
-  <!-- 內容 -->
   <div class="tab-panels px-5 pt-2 pb-5">
     <slot />
   </div>
 </div>
 
+<style>
+  /* 隱藏捲軸但保留捲動功能 */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
 <script is:inline>
-  (function setupSlidingTabs() {
+  (function setupDynamicTabs() {
     const containers = document.querySelectorAll(
-      ".tabs-container:not([data-initialized-sliding])",
+      ".tabs-container:not([data-initialized-dynamic])",
     );
 
     containers.forEach((container) => {
-      container.setAttribute("data-initialized-sliding", "true");
+      container.setAttribute("data-initialized-dynamic", "true");
 
-      const buttons = container.querySelectorAll(".tab-button");
+      const nav = container.querySelector(".tab-nav");
       const panels = container.querySelectorAll(".tab-panel");
       const line = container.querySelector(".tab-sliding-line");
 
-      // 初始化底線位置
-      const updateLine = (btn) => {
-        line.style.width = `${btn.offsetWidth}px`;
-        line.style.transform = `translateX(${btn.offsetLeft}px)`;
-      };
+      panels.forEach((panel, idx) => {
+        const label = panel.getAttribute("data-label");
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.innerText = label;
+        // 確保按鈕不會被壓縮 (flex-shrink-0) [cite: 37]
+        btn.className = `tab-button flex-shrink-0 relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-300 outline-none ${
+          idx === 0 ? "text-green-400" : "text-gray-400 hover:text-gray-200"
+        }`;
 
-      // 預設選中第一個
-      if (buttons[0]) {
-        // 使用 requestAnimationFrame 確保在 DOM 完全渲染後計算位置
-        requestAnimationFrame(() => updateLine(buttons[0]));
-      }
+        btn.addEventListener("click", () => switchTab(btn, idx));
+        nav.insertBefore(btn, line);
 
-      buttons.forEach((btn, idx) => {
-        btn.addEventListener("click", () => {
-          buttons.forEach((b) => {
-            // 重置所有按鈕的顏色
-            b.classList.remove("text-green-400");
-            b.classList.add("hover:text-gray-200");
-            b.classList.add("text-gray-400");
-          });
-          // 設定當前按鈕的顏色
-          btn.classList.add("text-green-400");
-          btn.classList.remove("text-gray-400");
-          btn.classList.remove("hover:text-gray-200");
-
-          updateLine(btn);
-
-          panels.forEach((p) => p.classList.add("hidden"));
-          panels[idx].classList.remove("hidden");
-        });
+        if (idx === 0) panel.classList.remove("hidden");
+        else panel.classList.add("hidden");
       });
 
-      // 視窗縮放時重新計算位置，防止跑版
+      const updateLine = (btn) => {
+        line.style.opacity = "1";
+        line.style.width = `${btn.offsetWidth}px`;
+        line.style.transform = `translateX(${btn.offsetLeft}px)`;
+
+        // [新增] 自動捲動讓選中的標籤進入視線
+        btn.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      };
+
+      function switchTab(activeBtn, targetIdx) {
+        const buttons = container.querySelectorAll(".tab-button");
+        buttons.forEach((b) => {
+          b.classList.remove("text-green-400");
+          b.classList.add("text-gray-400", "hover:text-gray-200");
+        });
+        activeBtn.classList.add("text-green-400");
+        activeBtn.classList.remove("text-gray-400", "hover:text-gray-200");
+
+        updateLine(activeBtn);
+        panels.forEach((p, i) => {
+          if (i === targetIdx) p.classList.remove("hidden");
+          else p.classList.add("hidden");
+        });
+      }
+
+      const firstBtn = container.querySelector(".tab-button");
+      if (firstBtn) {
+        requestAnimationFrame(() => updateLine(firstBtn));
+      }
+
       window.addEventListener("resize", () => {
         const activeBtn = container.querySelector(".tab-button.text-green-400");
         if (activeBtn) updateLine(activeBtn);
