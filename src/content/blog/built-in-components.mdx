@@ -17,6 +17,9 @@ import File from "@shComponents/Files/File.astro";
 
 import GithubCard from "@shComponents/GHCard/GitHubCard.astro";
 
+import Tabs from "@shComponents/Tab/Tabs.astro";
+import TabItem from "@shComponents/Tab/TabItem.astro";
+
 ## 步驟指示器
 
 - **位置：**
@@ -263,3 +266,21 @@ Serious and/or dangerous situations.
 :::caution[小心]
 Negative potential consequences of an action.
 :::
+
+## 分頁
+
+<Tabs labels={["Javascript", "Rust", "Typescript"]}>
+  <TabItem index={0}>
+
+    ```javascript
+    console.log("Hello World in Javascript");
+    ```
+
+  </TabItem>
+  <TabItem index={1}>
+    <p class="text-gray-300">Hello World in Rust</p>
+  </TabItem>
+  <TabItem index={2}>
+    <p class="text-gray-300">Hello World in Typescript</p>
+  </TabItem>
+</Tabs>
