@@ -56,4 +56,10 @@ export const en: Translation = {
   [Key.github_card_no_description]: "No description provided.",
   [Key.github_card_updated_at]: "Updated at",
   [Key.github_card_not_found]: "Not Found",
+
+  // Built-in Components - Tabs
+  [Key.tabs_warning_multiple_default_open]:
+    'Warning: Multiple TabItem components have data-default-open="true". Only the first one will be used as the default active tab.\nFound {count} occurrences of data-default-open="true".',
+  [Key.tabs_multiple_default_open_description]:
+    'The default active tab is determined by the first TabItem component with "defaultOpen" attribute.',
 };

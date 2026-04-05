@@ -49,7 +49,7 @@ enum I18nKey {
 
   // 內建組件 - Tabs
   tabs_warning_multiple_default_open = 'Warning: Multiple TabItem components have data-default-open="true". Only the first one will be used as the default active tab.\nFound {count} occurrences of data-default-open="true".',
-  tabs_multiple_default_open_description = 'The default active tab is determined by the first TabItem component with data-default-open="true".',
+  tabs_multiple_default_open_description = 'The default active tab is determined by the first TabItem component with "defaultOpen" attribute.',
 }
 
 export default I18nKey;
