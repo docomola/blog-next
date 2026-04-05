@@ -1,44 +1,62 @@
 ---
 import { Button } from "@ui/button.tsx";
-import * as SimpleIcons from "simple-icons-astro";
 import config from "@shConfig";
-
-type IconName = keyof typeof SimpleIcons;
 
 const isImageUrl = (str: string): boolean => {
   return /^\/.*\.(png|jpg|jpeg|gif|svg|webp)$/i.test(str);
 };
+
+type LinkItem = (typeof config.footer.links)[number];
+
+const resolvedLinks = await Promise.all(
+  config.footer.links.map(async (link: LinkItem) => {
+    const isUrl = isImageUrl(link.socialMedia);
+
+    if (isUrl) {
+      return { ...link, isUrl, IconComponent: null };
+    }
+
+    try {
+      const mod = await import("simple-icons-astro/" + link.socialMedia);
+      return {
+        ...link,
+        isUrl: false,
+        IconComponent: mod.default,
+      };
+    } catch {
+      console.warn(
+        "[SocialLinks] icon not found:",
+        link.socialMedia,
+        "Please verify the name on simpleicons.org",
+      );
+      return { ...link, isUrl: false, IconComponent: null };
+    }
+  }),
+);
 ---
 
 <div class="flex flex-wrap items-center justify-start gap-4 md:justify-end">
   {
-    config.footer.links.map((link) => {
-      const isUrl = isImageUrl(link.socialMedia);
-      const IconComponent = !isUrl
-        ? SimpleIcons[link.socialMedia as IconName]
-        : null;
-
-      return (
+    resolvedLinks.map(({ socialMedia, url, isUrl, IconComponent }) => (
+      <Button asChild>
         <a
-          href={link.url}
+          href={url}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={link.socialMedia}
+          aria-label={socialMedia}
           class="h-6 w-6 text-white"
         >
-          <Button asChild>
-            {isUrl ? (
-              <img
-                src={link.socialMedia}
-                alt=""
-                class="h-6 w-6 object-contain transition-all hover:opacity-80"
-              />
-            ) : IconComponent ? (
-              <IconComponent className="w-6 h-6 hover:opacity-80 transition-all" />
-            ) : null}
-          </Button>
+          {isUrl ? (
+            <img
+              src={socialMedia}
+              alt=""
+              class="h-6 w-6 object-contain transition-all hover:opacity-80"
+            />
+          ) : IconComponent ? (
+            <IconComponent class="h-6 w-6 transition-all hover:opacity-80" />
+          ) : null}
         </a>
-      );
-    })
+      </Button>
+    ))
   }
 </div>
