@@ -128,7 +128,11 @@ if (hasError) {
       const panels = container.querySelectorAll(".tab-panel");
       const line = container.querySelector(".tab-sliding-line");
 
-      // 1. 決定預設索引：尋找 data-default-open="true" 的面板
+      // 使用 AbortController 管理事件監聽器
+      const controller = new AbortController();
+      const { signal } = controller;
+
+      // 1. 決定預設索引
       let defaultIndex = 0;
       panels.forEach((panel, idx) => {
         if (panel.getAttribute("data-default-open") === "true") {
@@ -154,7 +158,7 @@ if (hasError) {
         }
       };
 
-      nav.addEventListener("scroll", updateGradients);
+      nav.addEventListener("scroll", updateGradients, { signal });
 
       // --- 生成按鈕與初始化面板 ---
       panels.forEach((panel, idx) => {
@@ -163,10 +167,8 @@ if (hasError) {
         btn.type = "button";
         btn.innerText = label;
 
-        // 基礎樣式 (z-10 確保在滑動線上方，flex-shrink-0 防止被擠壓)
         btn.className = `tab-button flex-shrink-0 relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-300 outline-none`;
 
-        // 根據是否為預設索引設定初始顏色
         if (idx === defaultIndex) {
           btn.classList.add("text-green-400");
           panel.classList.remove("hidden");
@@ -175,7 +177,7 @@ if (hasError) {
           panel.classList.add("hidden");
         }
 
-        btn.addEventListener("click", () => switchTab(btn, idx));
+        btn.addEventListener("click", () => switchTab(btn, idx), { signal });
         nav.insertBefore(btn, line);
       });
 
@@ -212,17 +214,32 @@ if (hasError) {
         const allBtns = container.querySelectorAll(".tab-button");
         const targetBtn = allBtns[defaultIndex];
         if (targetBtn) {
-          // 初始化時使用 auto 滾動避免頁面載入時產生不必要的動畫感
           updateLine(targetBtn, "auto");
         }
         updateGradients();
       });
 
-      window.addEventListener("resize", () => {
-        const activeBtn = container.querySelector(".tab-button.text-green-400");
-        if (activeBtn) updateLine(activeBtn, "auto");
-        updateGradients();
-      });
+      // Resize 監聽器也使用 signal
+      window.addEventListener(
+        "resize",
+        () => {
+          const activeBtn = container.querySelector(
+            ".tab-button.text-green-400",
+          );
+          if (activeBtn) updateLine(activeBtn, "auto");
+          updateGradients();
+        },
+        { signal },
+      );
+
+      // 在頁面離開前清理監聽器
+      document.addEventListener(
+        "astro:before-swap",
+        () => {
+          controller.abort();
+        },
+        { once: true },
+      );
     });
   })();
 </script>
