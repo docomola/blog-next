@@ -10,7 +10,7 @@ export function FriendAvatar({
     <img
       src={link}
       alt="網站logo"
-      className="w-28 h-28 shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900 object-cover"
+      className="h-28 w-28 shrink-0 overflow-hidden rounded-lg bg-zinc-200 object-cover dark:bg-zinc-900"
       {...props}
     />
   );

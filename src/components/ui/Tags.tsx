@@ -27,7 +27,7 @@ export default function Tags({ tags }: TagsProps) {
           <TooltipTrigger asChild>
             <button
               aria-haspopup="true"
-              className="tag-more inline-flex items-center px-2 py-1 rounded text-sm bg-neutral-800 hover:bg-neutral-700 transition"
+              className="tag-more inline-flex items-center rounded bg-neutral-800 px-2 py-1 text-sm transition hover:bg-neutral-700"
               tabIndex={0}
             >
               <MoreHorizontal size={14} />
@@ -36,7 +36,7 @@ export default function Tags({ tags }: TagsProps) {
 
           <TooltipContent
             sideOffset={8}
-            className="min-w-40 bg-neutral-900 border border-white/10 rounded-md p-2 shadow-lg z-999"
+            className="z-999 min-w-40 rounded-md border border-white/10 bg-neutral-900 p-2 shadow-lg"
           >
             <div className="flex flex-col gap-2">
               {rest.map((tag) => (

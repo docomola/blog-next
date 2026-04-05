@@ -59,8 +59,8 @@ const tocTree = headings.reduce(
 <div id="toc" class="sticky top-30 z-40 mt-5">
   {
     tocTree.length > 0 && (
-      <div class="flex flex-col h-full">
-        <div class="px-4 py-3 border-b border-slate-700">
+      <div class="flex h-full flex-col">
+        <div class="border-b border-slate-700 px-4 py-3">
           <CardTitle className="text-white text-sm font-semibold tracking-wider bg-transparent">
             {i18n(I18nKey.post_toc_title)}
           </CardTitle>
@@ -71,7 +71,7 @@ const tocTree = headings.reduce(
               <li class="group">
                 <a
                   href={`#${item.slug}`}
-                  class={`toc-link toc-level-${minDepth} flex items-center gap-2 px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors duration-400 relative`}
+                  class={`toc-link toc-level-${minDepth} relative flex items-center gap-2 px-4 py-2 text-sm text-slate-300 transition-colors duration-400 hover:text-white`}
                   data-heading-index={index}
                   data-heading-slug={item.slug}
                 >
@@ -104,7 +104,7 @@ const tocTree = headings.reduce(
                       <li>
                         <a
                           href={`#${child.slug}`}
-                          class={`toc-link toc-level-${child.depth} block py-1.5 text-xs text-slate-400 hover:text-slate-100 transition-colors duration-400 truncate`}
+                          class={`toc-link toc-level-${child.depth} block truncate py-1.5 text-xs text-slate-400 transition-colors duration-400 hover:text-slate-100`}
                           style={`padding-left: ${1.5 + (child.depth - minDepth) * 1}rem;`}
                           data-heading-slug={child.slug}
                           tabindex="-1"

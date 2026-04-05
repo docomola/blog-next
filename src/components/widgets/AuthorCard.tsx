@@ -72,14 +72,14 @@ function AuthorCard({
   links,
 }: AuthorCardProps) {
   return (
-    <Card className="relative p-4 bg-gray-800 overflow-hidden">
+    <Card className="relative overflow-hidden bg-gray-800 p-4">
       {/* 裝飾性背景圖 - 右下角 */}
-      <div className="absolute right-0 bottom-0 w-[171px] h-[171px] opacity-40 pointer-events-none">
+      <div className="pointer-events-none absolute right-0 bottom-0 h-[171px] w-[171px] opacity-40">
         <img
           src={image}
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
         <div
           className="absolute inset-0"
@@ -91,16 +91,16 @@ function AuthorCard({
       </div>
 
       {/* 卡片內容 */}
-      <div className="flex justify-start gap-4 relative z-10">
-        <Avatar className="w-12 h-12">
+      <div className="relative z-10 flex justify-start gap-4">
+        <Avatar className="h-12 w-12">
           <AvatarImage src={image} />
           <AvatarFallback>{name.charAt(0)}</AvatarFallback>
         </Avatar>
-        <div className="space-y-1 w-full">
+        <div className="w-full space-y-1">
           <h3 className="text-lg font-bold">{name}</h3>
           <h4 className="text-sm font-semibold opacity-30">@{slug}</h4>
           <p className="text-sm">{description}</p>
-          <div className="text-xs gap-2 flex flex-wrap mt-2">
+          <div className="mt-2 flex flex-wrap gap-2 text-xs">
             {links.map((link) => (
               <Tooltip key={link.label}>
                 <TooltipTrigger asChild>
@@ -117,7 +117,7 @@ function AuthorCard({
                       <img
                         src={link.icon}
                         alt=""
-                        className="w-4.5 h-4.5 object-contain"
+                        className="h-4.5 w-4.5 object-contain"
                       />
                     ) : link.icon ? (
                       <DynamicIcon iconName={link.icon} size={18} />

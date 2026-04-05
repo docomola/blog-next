@@ -30,31 +30,31 @@ const locale = config.lang || "zh-Hant";
   </head>
   <body>
     <div
-      class="min-h-screen w-screen flex flex-col bg-[#0078d7] pt-6 sm:pt-10 lg:pt-27 px-4 sm:px-8 lg:px-50 pb-32 sm:pb-20"
+      class="flex min-h-screen w-screen flex-col bg-[#0078d7] px-4 pt-6 pb-32 sm:px-8 sm:pt-10 sm:pb-20 lg:px-50 lg:pt-27"
     >
       <!-- 主要內容 -->
-      <div class="flex flex-col items-start justify-start w-full gap-0">
-        <h1 class="text-7xl sm:text-9xl lg:text-[200px] font-normal">
+      <div class="flex w-full flex-col items-start justify-start gap-0">
+        <h1 class="text-7xl font-normal sm:text-9xl lg:text-[200px]">
           {Math.random() < 0.1 ? ":)" : ":("}
         </h1>
         <h2
-          class="text-xl sm:text-3xl lg:text-5xl/16 font-thin mt-6 ml-1 sm:ml-2"
+          class="mt-6 ml-1 text-xl font-thin sm:ml-2 sm:text-3xl lg:text-5xl/16"
         >
           {i18n(I18nKey.notfound_bsod_title_line_1)}<br />
           {i18n(I18nKey.notfound_bsod_title_line_2)}
         </h2>
         <h2
           id="progress"
-          class="text-xl sm:text-3xl lg:text-5xl/16 font-thin ml-2 sm:ml-4 mt-4 sm:mt-6"
+          class="mt-4 ml-2 text-xl font-thin sm:mt-6 sm:ml-4 sm:text-3xl lg:text-5xl/16"
         >
           {i18n(I18nKey.notfound_finished_percent_description)} 0%
         </h2>
       </div>
       <div
-        class="flex flex-col sm:flex-row ml-2 sm:ml-4 mt-4 sm:mt-6 gap-4 sm:gap-6"
+        class="mt-4 ml-2 flex flex-col gap-4 sm:mt-6 sm:ml-4 sm:flex-row sm:gap-6"
       >
         <div
-          class="h-24 w-24 sm:h-30 sm:w-30 p-2 bg-white flex justify-center align-middle shrink-0"
+          class="flex h-24 w-24 shrink-0 justify-center bg-white p-2 align-middle sm:h-30 sm:w-30"
         >
           <img
             id="qr-image"
@@ -64,7 +64,7 @@ const locale = config.lang || "zh-Hant";
           />
         </div>
         <div
-          class="text-white font-light max-w-full sm:max-w-lg text-sm sm:text-base"
+          class="max-w-full text-sm font-light text-white sm:max-w-lg sm:text-base"
         >
           <p id="description" class="wrap-break-word">
             {i18n(I18nKey.notfound_please_go_back_normal)}
@@ -82,7 +82,7 @@ const locale = config.lang || "zh-Hant";
     <div
       id="info"
       hidden
-      class="fixed bottom-4 sm:bottom-10 left-1/2 -translate-x-1/2 sm:left-4/9 sm:translate-x-0 bg-blue-600/60 px-3 sm:px-4 py-2 rounded-xl text-sm sm:text-base max-w-[90vw] sm:max-w-none text-center sm:text-left"
+      class="fixed bottom-4 left-1/2 max-w-[90vw] -translate-x-1/2 rounded-xl bg-blue-600/60 px-3 py-2 text-center text-sm sm:bottom-10 sm:left-4/9 sm:max-w-none sm:translate-x-0 sm:px-4 sm:text-left sm:text-base"
     >
       {i18n(I18nKey.notfound_press_any_key_1)}
       <KbdGroup><Kbd>{i18n(I18nKey.notfound_press_any_key_2)}</Kbd></KbdGroup>

@@ -12,7 +12,7 @@ export const ToCommentButton = ({ className }: { className?: string }) => {
             id="to-comment-button"
             aria-label="Jump to comments"
             variant={"ghost"}
-            className={`hidden lg:block backdrop-blur-md ${className}`}
+            className={`hidden backdrop-blur-md lg:block ${className}`}
             asChild
           >
             <MessageCircleMoreIcon
@@ -26,7 +26,7 @@ export const ToCommentButton = ({ className }: { className?: string }) => {
             id="to-comment-button-mobile"
             aria-label="Jump to comments"
             variant={"outline"}
-            className={`lg:hidden block backdrop-blur-md ${className}`}
+            className={`block backdrop-blur-md lg:hidden ${className}`}
             asChild
           >
             <MessageCircleMoreIcon

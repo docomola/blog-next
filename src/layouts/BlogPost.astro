@@ -66,9 +66,9 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
     <article class="flex-1">
       <div>
         <!-- 文章資訊 -->
-        <div class="flex mb-4 gap-2">
+        <div class="mb-4 flex gap-2">
           <!-- 文章日期 -->
-          <time class="text-sm text-gray-500 flex items-center gap-1">
+          <time class="flex items-center gap-1 text-sm text-gray-500">
             <CalendarDays size={20} />{i18n(I18nKey.post_released)}{" "}
             <FormattedDate date={pubDate} />
             {
@@ -83,14 +83,14 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
           </time>
           <Separator orientation="vertical" client:only="react" />
           <!-- 文章作者 -->
-          <div class="text-sm text-gray-500 flex items-center gap-1">
+          <div class="flex items-center gap-1 text-sm text-gray-500">
             <User size={20} />{i18n(I18nKey.post_author)}{" "}
             {config.author.name}
           </div>
         </div>
-        <div class="flex mb-4 gap-2">
+        <div class="mb-4 flex gap-2">
           <!-- 文章標籤 -->
-          <div class="text-sm text-gray-500 flex items-center gap-1">
+          <div class="flex items-center gap-1 text-sm text-gray-500">
             <Tag size={20} />{i18n(I18nKey.post_tags)}{" "}
             <Tags tags={tags} />
           </div>

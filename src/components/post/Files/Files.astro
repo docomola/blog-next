@@ -17,7 +17,7 @@ const { class: className, path } = Astro.props;
 >
   <!-- 背景裝飾 -->
   <FolderIcon
-    class="absolute bottom-2 right-2 w-4 h-4 text-gray-500 opacity-20"
+    class="absolute right-2 bottom-2 h-4 w-4 text-gray-500 opacity-20"
     stroke-width={4}
     size={48}
   />
@@ -25,11 +25,11 @@ const { class: className, path } = Astro.props;
   {
     path && (
       <div
-        class="px-5 py-3 border-b border-white/10 select-none flex gap-2"
+        class="flex gap-2 border-b border-white/10 px-5 py-3 select-none"
         title={path}
       >
-        <FolderIcon class="w-4 h-4 text-gray-500" />
-        <span class="sh-builtin-components text-gray-400 text-xs">{path}</span>
+        <FolderIcon class="h-4 w-4 text-gray-500" />
+        <span class="sh-builtin-components text-xs text-gray-400">{path}</span>
       </div>
     )
   }

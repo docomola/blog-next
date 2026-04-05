@@ -6,13 +6,13 @@ import { Button } from "@ui/button";
 
 export default function EmptyBlog({}) {
   return (
-    <div className="flex gap-4 flex-col justify-center items-center h-full border rounded-xl bg-neutral-900">
-      <div className="flex items-center justify-center bg-neutral-800 rounded-lg size-9 border">
+    <div className="flex h-full flex-col items-center justify-center gap-4 rounded-xl border bg-neutral-900">
+      <div className="flex size-9 items-center justify-center rounded-lg border bg-neutral-800">
         <FileQuestionMark size={20} />
       </div>
       <div className="text-center text-neutral-400">
         <p className="text-2xl font-bold">{i18n(I18nKey.empty_blog_title)}</p>
-        <p className="text-sm mt-2">{i18n(I18nKey.empty_blog_description)}</p>
+        <p className="mt-2 text-sm">{i18n(I18nKey.empty_blog_description)}</p>
       </div>
       <div className="flex gap-2">
         <Button

@@ -48,7 +48,7 @@
 /* Global base styles */
 @layer base {
   body {
-    @apply bg-neutral-950 text-white font-sans;
+    @apply bg-neutral-950 font-sans text-white;
   }
 }
 

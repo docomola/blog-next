@@ -20,9 +20,9 @@ const { name, icon = "normal", highlighted = false } = Astro.props;
       "bg-green-500/10 rounded border border-green-400/20 is-highlighted my-1",
   )}
 >
-  <div class="w-2 mr-1"></div>
+  <div class="mr-1 w-2"></div>
 
-  <FileIcon class="w-5 h-5 mr-2 text-gray-500" icon={icon} />
+  <FileIcon class="mr-2 h-5 w-5 text-gray-500" icon={icon} />
 
   <span>{name}</span>
 </div>

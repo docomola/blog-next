@@ -9,15 +9,15 @@ import { FriendAvatar } from "./FriendAvatar";
 const items = config.friendLinks;
 ---
 
-<div class="flex w-full rounded-lg overflow-hidden relative min-h-32">
-  <div class="card-base z-10 px-9 py-6 relative w-full">
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-x-6 gap-y-8 my-4">
+<div class="relative flex min-h-32 w-full overflow-hidden rounded-lg">
+  <div class="card-base relative z-10 w-full px-9 py-6">
+    <div class="my-4 grid grid-cols-1 gap-x-6 gap-y-8 xl:grid-cols-2">
       {
         items.map((item) => (
-          <div class="flex flex-nowrap items-stretch min-h-28 gap-4 rounded-lg">
+          <div class="flex min-h-28 flex-nowrap items-stretch gap-4 rounded-lg">
             <FriendAvatar link={item.imgUrl} fallback={item.title} />
-            <div class="grow w-full">
-              <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">
+            <div class="w-full grow">
+              <div class="mb-1 text-lg font-bold text-neutral-900 transition dark:text-neutral-100">
                 {item.title}
               </div>
               <div class="text-50 text-sm font-medium">{item.desc}</div>

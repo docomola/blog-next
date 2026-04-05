@@ -47,7 +47,7 @@
   #post-content h4,
   #post-content h5,
   #post-content h6 {
-    @apply font-display font-bold my-8!;
+    @apply font-display my-8! font-bold;
   }
 
   #post-content h1 {
@@ -77,7 +77,7 @@
   /* 列表樣式 */
   #post-content ul,
   #post-content ol {
-    @apply list-outside marker:text-white/30 pl-[30px];
+    @apply list-outside pl-[30px] marker:text-white/30;
   }
 
   #post-content li {
@@ -96,19 +96,19 @@
   #post-content ol ul,
   #post-content ul ol,
   #post-content ol ol {
-    @apply pl-2.5 mb-0!;
+    @apply mb-0! pl-2.5;
   }
 
   #post-content ul ul:first-child,
   #post-content ol ul:first-child,
   #post-content ul ol:first-child,
   #post-content ol ol:first-child {
-    @apply pl-6 mt-4 mb-0!;
+    @apply mt-4 mb-0! pl-6;
   }
 
   /* 引言樣式 */
   #post-content blockquote {
-    @apply font-serif border-l-4 border-neutral-700 pl-4 italic text-neutral-400;
+    @apply border-l-4 border-neutral-700 pl-4 font-serif text-neutral-400 italic;
   }
 
   /* 程式碼區塊樣式 */
@@ -139,12 +139,12 @@
 
   /* 表格樣式 */
   #post-content table {
-    @apply w-full border-collapse rounded-lg overflow-hidden;
+    @apply w-full border-collapse overflow-hidden rounded-lg;
   }
 
   #post-content th,
   #post-content td {
-    @apply p-2 border transition-colors duration-300;
+    @apply border p-2 transition-colors duration-300;
   }
 
   #post-content th {
@@ -183,7 +183,7 @@
 
   /* 分隔線樣式 */
   #post-content hr {
-    @apply border-t border-2 border-neutral-700 my-8 max-w-2xl justify-center mx-auto;
+    @apply mx-auto my-8 max-w-2xl justify-center border-2 border-t border-neutral-700;
   }
 
   /* 行內元素樣式 */
@@ -198,7 +198,7 @@
   }
 
   #post-content a:not(.sh-builtin-components) {
-    @apply text-green-300 relative transition-all duration-300 px-0.5;
+    @apply relative px-0.5 text-green-300 transition-all duration-300;
   }
 
   #post-content a:not(.sh-builtin-components)::after {
@@ -229,7 +229,7 @@
 
   /* 行內 code */
   #post-content :not(pre) > code {
-    @apply bg-neutral-800 text-sm font-mono px-1.5 py-0.5 rounded transition-colors duration-300;
+    @apply rounded bg-neutral-800 px-1.5 py-0.5 font-mono text-sm transition-colors duration-300;
   }
 
   #post-content :not(pre) > code:hover {
@@ -238,7 +238,7 @@
 
   /* 圖片樣式 */
   #post-content img {
-    @apply rounded-lg my-6;
+    @apply my-6 rounded-lg;
   }
 
   /* 圖片置中 */
@@ -251,7 +251,7 @@
   /* 音頻和視頻樣式 */
   #post-content audio,
   #post-content video {
-    @apply rounded-lg my-6;
+    @apply my-6 rounded-lg;
   }
 
   #post-content audio:hover,

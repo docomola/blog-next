@@ -57,9 +57,9 @@ export default function rehypeCodeBlock() {
                         {
                           class: "code-icon-dot",
                         },
-                        [{ type: "text", value: "●" }]
+                        [{ type: "text", value: "●" }],
                       ),
-                    ]
+                    ],
                   ),
                   // 文件名
                   h(
@@ -67,9 +67,9 @@ export default function rehypeCodeBlock() {
                     {
                       class: "code-filename",
                     },
-                    [{ type: "text", value: filename }]
+                    [{ type: "text", value: filename }],
                   ),
-                ]
+                ],
               ),
               // 右側: 複製按鈕
               h(
@@ -111,17 +111,17 @@ export default function rehypeCodeBlock() {
                           h("path", {
                             d: "M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2",
                           }),
-                        ]
+                        ],
                       ),
-                    ]
+                    ],
                   ),
-                ]
+                ],
               ),
-            ]
+            ],
           ),
           // 代碼內容區塊 - 保持原有的 <pre> 元素
           node,
-        ]
+        ],
       );
 
       // 替換原始節點

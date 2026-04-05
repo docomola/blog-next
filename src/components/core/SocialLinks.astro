@@ -10,7 +10,7 @@ const isImageUrl = (str: string): boolean => {
 };
 ---
 
-<div class="flex items-center justify-start md:justify-end gap-4 flex-wrap">
+<div class="flex flex-wrap items-center justify-start gap-4 md:justify-end">
   {
     config.footer.links.map((link) => {
       const isUrl = isImageUrl(link.socialMedia);
@@ -24,14 +24,14 @@ const isImageUrl = (str: string): boolean => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={link.socialMedia}
-          class="w-6 h-6 text-white"
+          class="h-6 w-6 text-white"
         >
           <Button asChild>
             {isUrl ? (
               <img
                 src={link.socialMedia}
                 alt=""
-                class="w-6 h-6 object-contain hover:opacity-80 transition-all"
+                class="h-6 w-6 object-contain transition-all hover:opacity-80"
               />
             ) : IconComponent ? (
               <IconComponent className="w-6 h-6 hover:opacity-80 transition-all" />

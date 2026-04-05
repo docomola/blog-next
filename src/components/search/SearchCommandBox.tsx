@@ -125,7 +125,7 @@ export function SearchCommandBox() {
           )}
 
           {!pagefindReady && !error && (
-            <div className="px-2 py-2 text-sm text-muted-foreground">
+            <div className="text-muted-foreground px-2 py-2 text-sm">
               搜尋功能載入中...
             </div>
           )}

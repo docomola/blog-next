@@ -84,7 +84,7 @@ export default function BlogListClient({
         <EmptyBlog />
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-3">
             {paginated.map((post) => (
               <BlogCard
                 key={post.id}

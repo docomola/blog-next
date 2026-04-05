@@ -26,22 +26,22 @@ const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
 >
   <button
     type="button"
-    class="folder-trigger w-full flex items-center py-1.5 hover:text-white transition-colors text-left"
+    class="folder-trigger flex w-full items-center py-1.5 text-left transition-colors hover:text-white"
     data-target={folderId}
     aria-expanded={defaultOpen ? "true" : "false"}
   >
     <ChevronRight
-      class="w-4 h-4 mr-1 text-gray-600 transition-transform duration-300"
+      class="mr-1 h-4 w-4 text-gray-600 transition-transform duration-300"
       style={defaultOpen ? "transform: rotate(90deg)" : ""}
     />
 
-    <div class="relative w-5 h-5 mr-2">
+    <div class="relative mr-2 h-5 w-5">
       <FolderIcon
-        class="folder-icon-close absolute w-5 h-5 text-neutral-400 transition-opacity duration-300"
+        class="folder-icon-close absolute h-5 w-5 text-neutral-400 transition-opacity duration-300"
         style={defaultOpen ? "opacity: 0" : "opacity: 1"}
       />
       <FolderOpenIcon
-        class="folder-icon-open absolute w-5 h-5 text-green-400 transition-opacity duration-300"
+        class="folder-icon-open absolute h-5 w-5 text-green-400 transition-opacity duration-300"
         style={defaultOpen ? "opacity: 1" : "opacity: 0"}
       />
     </div>
@@ -49,7 +49,7 @@ const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
     <span class="font-medium text-gray-300">{name}</span>
 
     <div
-      class="parent-highlight-indicator hidden w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] ml-2"
+      class="parent-highlight-indicator ml-2 hidden h-1.5 w-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"
     >
     </div>
   </button>
@@ -60,7 +60,7 @@ const folderId = `folder-${Math.random().toString(36).substr(2, 9)}`;
     style={defaultOpen ? "max-height: 1000px;" : "max-height: 0px;"}
     hidden={!defaultOpen}
   >
-    <div class="pl-4 border-l border-white/10 ml-[7px]">
+    <div class="ml-[7px] border-l border-white/10 pl-4">
       <slot />
     </div>
   </div>
