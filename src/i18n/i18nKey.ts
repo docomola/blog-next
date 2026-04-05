@@ -32,6 +32,24 @@ enum I18nKey {
   notfound_please_go_back_normal = "For more information about this issue and possible fixes, visit our homepage.",
   notfound_please_go_back_rickroll = "For more information about this issue and possible fixes, visit https://reurl.cc/jmEY8Z.",
   notfound_please_go_back_homo = "For detailed information on this issue and possible fixes, please review Silver Dream again. (surely",
+
+  // 部落格集合為空的通知訊息
+  empty_blog_title = "Where is the post?",
+  empty_blog_description = "Seems there is no post that is available to use, maybe you can create one... or copy some?",
+  empty_blog_refresh = "Refresh",
+  empty_blog_docs = "Learn More",
+
+  // 內建組件 - GitHubCard
+  github_card_public = "Public",
+  github_card_private = "Private",
+  github_card_archive = "Archive",
+  github_card_no_description = "No description provided.",
+  github_card_updated_at = "Updated at",
+  github_card_not_found = "Not Found",
+
+  // 內建組件 - Tabs
+  tabs_warning_multiple_default_open = 'Warning: Multiple TabItem components have data-default-open="true". Only the first one will be used as the default active tab.\nFound {count} occurrences of data-default-open="true".',
+  tabs_multiple_default_open_description = 'The default active tab is determined by the first TabItem component with "defaultOpen" attribute.',
 }
 
 export default I18nKey;

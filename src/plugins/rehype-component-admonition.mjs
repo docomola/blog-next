@@ -15,7 +15,7 @@ export function AdmonitionComponent(properties, children, type) {
     return h(
       "div",
       { class: "hidden" },
-      'Invalid admonition directive. (Admonition directives must be of block type ":::note{name="name"} <content> :::")'
+      'Invalid admonition directive. (Admonition directives must be of block type ":::note{name="name"} <content> :::")',
     );
 
   let label = null;

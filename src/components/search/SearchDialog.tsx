@@ -36,7 +36,7 @@ export function SearchDialog() {
       <Button
         variant="ghost"
         size="icon"
-        className="rounded-lg bg-neutral-950 border border-white/15 hover:bg-neutral-900"
+        className="rounded-lg border border-white/15 bg-neutral-950 hover:bg-neutral-900"
         aria-label="Search"
       >
         <SearchIcon size={18} />

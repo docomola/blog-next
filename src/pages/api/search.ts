@@ -10,7 +10,7 @@ export async function GET({ url }: { url: URL }): Promise<Response> {
   if (!query) {
     return new Response(
       JSON.stringify({ error: "No query provided", results: [] }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      { status: 200, headers: { "Content-Type": "application/json" } },
     );
   }
 
@@ -29,7 +29,7 @@ export async function GET({ url }: { url: URL }): Promise<Response> {
     .filter(
       (post) =>
         post.data.title.toLowerCase().includes(safeQuery.toLowerCase()) ||
-        post.data.description?.toLowerCase().includes(safeQuery.toLowerCase())
+        post.data.description?.toLowerCase().includes(safeQuery.toLowerCase()),
     )
     .map((post) => ({
       title: post.data.title,

@@ -45,23 +45,23 @@ const currentPage = Number(Astro.url.searchParams.get("page")) || 1;
     <!-- Right: Featured article card -->
     {
       config.style.enableRecentPosts && (
-        <div class="flex flex-col justify-end gap-5" slot="right">
+        <div class="flex flex-col items-end justify-end gap-5" slot="right">
           {featuredPost && (
             <a
               href={`/blog/${featuredPost.id}/`}
-              class="border border-white/20 rounded-xl overflow-hidden backdrop-blur-sm bg-black/30 hover:bg-black/50 transition-all group h-57.5 flex flex-col justify-end p-6"
+              class="group flex h-57.5 w-[380px] flex-col justify-end overflow-hidden rounded-xl border border-white/20 bg-black/30 p-6 backdrop-blur-sm transition-all hover:bg-black/50"
               style={{
                 backgroundImage: featuredPost.data.heroImage
                   ? `url(${featuredPost.data.heroImage.src})`
-                  : "none",
+                  : config.style.defaultPostImage,
                 backgroundSize: "cover",
                 backgroundBlendMode: "darken",
               }}
             >
-              <p class="text-white/60 text-xl tracking-[4px] mb-2.5">
+              <p class="mb-2.5 text-xl tracking-[4px] text-white/60">
                 {i18n(I18nKey.home_recent_posts)}
               </p>
-              <h2 class="text-white text-4xl font-bold group-hover:text-white/90 transition-colors">
+              <h2 class="text-4xl font-bold text-white transition-colors group-hover:text-white/90">
                 {featuredPost.data.title}
               </h2>
             </a>

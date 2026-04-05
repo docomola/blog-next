@@ -9,13 +9,13 @@ const className = Astro.props.class;
   id="to-top-button"
   aria-label="Back to top"
   variant={"ghost"}
-  className={`rounded-lg shadow-lg opacity-0 invisible transition-all duration-300 data-[show=true]:opacity-100 data-[show=true]:visible flex items-center justify-center backdrop-blur-md ${className}`}
+  className={`invisible flex items-center justify-center rounded-lg opacity-0 shadow-lg backdrop-blur-md transition-all duration-300 data-[show=true]:visible data-[show=true]:opacity-100 ${className}`}
 >
   <ArrowUp className="text-white lg:rotate-90" size={20} />
-  <span class="hidden lg:block uppercase text-xs ml-4 tracking-[0.3em]"
+  <span class="ml-4 hidden text-xs tracking-[0.3em] uppercase lg:block"
     >Back to top</span
   >
-  <div class="hidden lg:block w-10 h-px bg-gray-300/50 ml-2"></div>
+  <div class="ml-2 hidden h-px w-10 bg-gray-300/50 lg:block"></div>
 </Button>
 
 <!-- Client-side JavaScript: Handles interaction -->
