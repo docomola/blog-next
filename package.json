@@ -79,6 +79,7 @@
     "pagefind": "^1.4.0",
     "prettier": "3.7.3",
     "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "remark-directive": "^4.0.0",
     "remark-excerpt": "1.0.0-beta.1",
     "remark-math": "^6.0.0",
