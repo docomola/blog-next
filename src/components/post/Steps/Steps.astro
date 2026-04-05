@@ -11,7 +11,10 @@ const counterStartValue = start - 1;
 ---
 
 <div
-  class={cn("sh-builtin-components steps-container flex flex-col", className)}
+  class={cn(
+    "sh-builtin-components steps-container flex flex-col mb-4",
+    className,
+  )}
   style={`--start-index: ${counterStartValue};`}
 >
   <slot />
