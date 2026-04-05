@@ -55,14 +55,14 @@ const langColor = data?.language
       target="_blank"
       rel="noopener noreferrer"
       class={cn(
-        "sh-builtin-components block group px-5 py-5 rounded-lg border border-white/10 bg-neutral-900 hover:border-white/30 hover:bg-neutral-800 transition-all duration-300 no-underline mb-4",
+        "sh-builtin-components group mb-4 block rounded-lg border border-white/10 bg-neutral-900 px-5 py-5 no-underline transition-all duration-300 hover:border-white/30 hover:bg-neutral-800",
         className,
       )}
     >
-      <div class="flex items-start justify-between mb-3">
+      <div class="mb-3 flex items-start justify-between">
         <div class="flex items-center gap-2">
-          <Github class="w-5 h-5 text-gray-400" />
-          <span class="text-green-400 font-semibold text-lg group-hover:text-green-500 transition-colors duration-300">
+          <Github class="h-5 w-5 text-gray-400" />
+          <span class="text-lg font-semibold text-green-400 transition-colors duration-300 group-hover:text-green-500">
             {data.name}
           </span>
         </div>
@@ -72,31 +72,31 @@ const langColor = data?.language
         </div>
       </div>
 
-      <p class="text-gray-400 text-base mb-4 line-clamp-2 leading-relaxed">
+      <p class="mb-4 line-clamp-2 text-base leading-relaxed text-gray-400">
         {data.description || i18n(I18nKey.github_card_no_description)}
       </p>
 
       <div class="flex items-center gap-4 text-xs text-gray-500">
         {data.language && (
           <div class="flex items-center gap-1.5">
-            <Circle class="w-3 h-3" fill={langColor} stroke="none" />
-            <span class="hover:text-blue-500 transition-colors">
+            <Circle class="h-3 w-3" fill={langColor} stroke="none" />
+            <span class="transition-colors hover:text-blue-500">
               {data.language}
             </span>
           </div>
         )}
 
-        <div class="flex items-center gap-1 hover:text-yellow-500 transition-colors">
-          <Star class="w-4 h-4" />
+        <div class="flex items-center gap-1 transition-colors hover:text-yellow-500">
+          <Star class="h-4 w-4" />
           <span>{data.stargazers_count.toLocaleString()}</span>
         </div>
 
-        <div class="flex items-center gap-1 hover:text-blue-500 transition-colors">
-          <GitFork class="w-4 h-4" />
+        <div class="flex items-center gap-1 transition-colors hover:text-blue-500">
+          <GitFork class="h-4 w-4" />
           <span>{data.forks_count.toLocaleString()}</span>
         </div>
 
-        <div class="hidden sm:block ml-auto italic">
+        <div class="ml-auto hidden italic sm:block">
           {i18n(I18nKey.github_card_updated_at)}
           {new Date(data.updated_at).toLocaleDateString()}
         </div>
@@ -105,11 +105,11 @@ const langColor = data?.language
   ) : (
     <div
       class={cn(
-        "sh-builtin-components flex flex-col items-center justify-center px-5 py-5 rounded-lg border border-white/10 bg-neutral-900 text-gray-500 text-center min-h-35",
+        "sh-builtin-components flex min-h-35 flex-col items-center justify-center rounded-lg border border-white/10 bg-neutral-900 px-5 py-5 text-center text-gray-500",
         className,
       )}
     >
-      <div class="sh-builtin-components bg-neutral-800 border size-8 flex items-center justify-center rounded-lg">
+      <div class="sh-builtin-components flex size-8 items-center justify-center rounded-lg border bg-neutral-800">
         <SearchAlert size={20} />
       </div>
       {i18n(I18nKey.github_card_not_found)}
