@@ -26,7 +26,23 @@ export function getTranslation(lang: string, key: I18nKey): string {
   return current[key] ?? key;
 }
 
-export default function i18n(key: I18nKey): string {
+export default function i18n(
+  key: I18nKey,
+  params?: Record<string, string | number>,
+): string {
   const lang = config.siteLang || "zh_TW";
-  return getTranslation(lang, key);
+  let translation = getTranslation(lang, key);
+
+  // 如果有傳入參數，則進行取代
+  if (params) {
+    Object.entries(params).forEach(([paramKey, value]) => {
+      // 取代 {key} 為實際數值
+      translation = translation.replace(
+        new RegExp(`{${paramKey}}`, "g"),
+        String(value),
+      );
+    });
+  }
+
+  return translation;
 }
