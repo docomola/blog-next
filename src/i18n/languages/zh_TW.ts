@@ -45,4 +45,11 @@ export const zh_TW: Translation = {
     "似乎沒有可用的文章，也許你可以建立一個... 或者複製一些過來？",
   [Key.empty_blog_refresh]: "重新整理",
   [Key.empty_blog_docs]: "了解更多",
+
+  // GitHub 卡片（內建元件）
+  [Key.github_card_public]: "公開儲存庫",
+  [Key.github_card_private]: "私人儲存庫",
+  [Key.github_card_archive]: "封存儲存庫",
+  [Key.github_card_no_description]: "儲存庫中並未提供描述",
+  [Key.github_card_updated_at]: "更新於",
 };

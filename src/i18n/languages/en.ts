@@ -48,4 +48,11 @@ export const en: Translation = {
     "Seems there is no post that is available to use, maybe you can create one... or copy some?",
   [Key.empty_blog_refresh]: "Refresh",
   [Key.empty_blog_docs]: "Learn More",
+
+  // GitHub Card (Built-in component)
+  [Key.github_card_public]: "Public",
+  [Key.github_card_private]: "Private",
+  [Key.github_card_archive]: "Archive",
+  [Key.github_card_no_description]: "No description provided.",
+  [Key.github_card_updated_at]: "Updated at",
 };
