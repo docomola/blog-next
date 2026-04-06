@@ -16,13 +16,12 @@ import config from "@shConfig";
 import { Separator } from "@components/ui/separator";
 import { DEFAULT_POST_IMAGE, SEPARATOR } from "@consts";
 
+import "@/styles/aside.css";
+
 import Toc from "@components/Toc.astro";
 import "katex/dist/katex.min.css";
 import Comment from "@components/comment/Comment.astro";
 import Tags from "@components/Tags.astro";
-
-import "@/styles/markdown.css";
-import "@/styles/aside.css";
 
 import i18n from "@i18n/translation";
 import I18nKey from "@i18n/i18nKey";
@@ -63,7 +62,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
 
   <BaseMainContent>
     <!-- Main column: Blog post content -->
-    <article class="w-full flex-1 min-w-0 max-w-full">
+    <article class="w-full max-w-full min-w-0 flex-1">
       <div>
         <!-- 文章資訊 -->
         <div class="mb-4 flex gap-2">
