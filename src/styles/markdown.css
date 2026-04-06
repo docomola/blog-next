@@ -280,4 +280,13 @@
   #post-content *::-webkit-scrollbar-track {
     @apply rounded-full bg-neutral-900;
   }
+
+  /* medium-zoom的樣式 */
+  .medium-zoom-overlay {
+    @apply z-9 bg-white/5! backdrop-blur-lg;
+  }
+
+  .medium-zoom-image--opened {
+    @apply z-10 rounded border-none;
+  }
 }
