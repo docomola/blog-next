@@ -26,7 +26,7 @@
     & li,
     & ol,
     & ul {
-      @apply text-lg leading-relaxed text-neutral-400;
+      @apply text-lg leading-relaxed text-neutral-400 transition-colors duration-300 hover:text-neutral-300;
     }
 
     /* 標題樣式 */
@@ -104,10 +104,14 @@
 
     /* 引言樣式 */
     & blockquote {
-      @apply ml-4 border-l-2 border-neutral-700 pl-4 font-serif text-neutral-400 italic transition-colors duration-300 group-hover:border-green-500/95;
+      @apply ml-4 border-l-2 border-neutral-700 pl-4 font-serif text-neutral-400 italic transition-colors duration-300 hover:border-green-500/95;
+
+      & p {
+        @apply transition-colors duration-300 group-hover:text-neutral-100;
+      }
 
       & .citation-wrapper {
-        @apply mt-2 text-sm text-neutral-500 transition-colors duration-300 group-hover:text-neutral-400;
+        @apply mt-2 text-sm text-neutral-500 transition-colors delay-100 duration-300 group-hover:text-neutral-400;
 
         /* 在引用人前方用偽元素加上一條橫線 */
         & cite.blockquote-citation::before {
@@ -118,7 +122,7 @@
           margin-right: 8px;
           vertical-align: super;
 
-          @apply bg-neutral-500 transition-colors duration-300 group-hover:bg-neutral-400;
+          @apply bg-neutral-600 transition-colors delay-75 duration-300;
         }
       }
     }
@@ -188,8 +192,16 @@
       @apply mx-1;
     }
 
-    & a:not(.sh-builtin-components) {
+    & a:not(.sh-builtin-components, .anchor) {
       @apply relative px-0.5 text-green-300 transition-all duration-300;
+    }
+
+    & a.anchor {
+      @apply relative;
+
+      & .anchor-icon {
+        @apply absolute top-4 -left-4;
+      }
     }
 
     & a:not(.sh-builtin-components)::after {
@@ -269,7 +281,7 @@
 
     /* 锚點樣式 */
     .anchor-icon {
-      @apply opacity-30 transition-opacity duration-300;
+      @apply text-xl opacity-30 transition-opacity duration-300;
     }
 
     .anchor-icon:hover {
