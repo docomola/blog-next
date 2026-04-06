@@ -26,7 +26,7 @@
     & li,
     & ol,
     & ul {
-      @apply text-lg leading-relaxed text-neutral-400 transition-colors duration-300 hover:text-neutral-300;
+      @apply text-lg leading-relaxed text-neutral-400 transition-colors duration-300;
     }
 
     /* 標題樣式 */
@@ -196,7 +196,7 @@
       @apply relative px-0.5 text-green-300 transition-all duration-300;
     }
 
-    & a:not(.sh-builtin-components)::after {
+    & a:not(.sh-builtin-components, .anchor)::after {
       content: "";
       position: absolute;
       left: 0;
@@ -209,13 +209,9 @@
         background-color 0.3s ease;
     }
 
-    & a:not(.sh-builtin-components):hover {
+    & a:not(.sh-builtin-components, .anchor):hover {
       @apply text-green-400;
       transform: translateY(-2px);
-    }
-
-    & a:not(.sh-builtin-components):hover::after {
-      background-color: rgba(255, 255, 255, 0.1); /* 底線 hover 效果 */
     }
 
     & strong {
