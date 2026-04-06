@@ -87,7 +87,7 @@ const defaultConfig: ShBlogConfig = {
     links: [
       {
         icon: "Github",
-        to: "https://github.com/",
+        to: "https://github.com/510208/sh-blog-next",
         label: "GitHub",
       },
     ],
