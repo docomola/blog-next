@@ -63,7 +63,7 @@
       @apply text-lg md:text-lg lg:text-xl;
     }
 
-    /* 列表樣式 */
+    /* 基礎列表定義 */
     & ul,
     & ol {
       @apply list-outside pl-[30px] marker:text-white/30;
@@ -78,14 +78,26 @@
       }
     }
 
+    /* 項目定義 */
     & li {
       @apply my-1 mb-2;
+
+      /* 預設 marker 樣式與過渡 */
+      &::marker {
+        @apply text-white/30 transition-colors duration-300;
+      }
+
+      /* 核心修正：僅針對當前被 hover 的 li 變更 marker 顏色 */
+      /* 使用 :hover 偽類結合 ::marker */
+      &:hover::marker {
+        @apply text-green-500/70;
+      }
     }
 
+    /* 針對不同類型的符號定義 */
     & ul {
       @apply list-disc;
     }
-
     & ol {
       @apply list-decimal;
     }
