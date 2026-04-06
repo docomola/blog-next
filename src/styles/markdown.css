@@ -104,7 +104,7 @@
 
     /* 引言樣式 */
     & blockquote {
-      @apply border-l-4 border-neutral-700 pl-4 font-serif text-neutral-400 italic;
+      @apply ml-4 border-l-2 border-neutral-700 pl-4 font-serif text-neutral-400 italic transition-colors duration-300 hover:border-green-500/95;
     }
 
     /* 程式碼區塊樣式 */
