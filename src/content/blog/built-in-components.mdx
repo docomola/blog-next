@@ -37,20 +37,11 @@ import TabItem from "@shComponents/Tab/TabItem.astro";
 
 你可以使用 `Steps` 和 `Step` 組件來創建一個步驟指示器，這對於展示流程或指南非常有用。
 
-```astro
-<Steps start={3}>
-  <Step title="第一步">這是第一步的描述</Step>
-  <Step title="第二步">這是第二步的描述</Step>
-  <Step title="第三步">
-    這是第三步的描述，你可以在這裡添加更多的內容來說明這一步驟。
-    <ol>
-      <li>這是一個清單，對你可以用清單</li>
-      <li>但是必須手動添加 HTML 標籤哦</li>
-    </ol>
-  </Step>
-</Steps>
-```
+<Tabs>
 
+  <TabItem label="程式碼">
+
+````astro
 <Steps start={3}>
   <Step title="第一步">這是第一步的描述</Step>
   <Step title="第二步">這是第二步的描述</Step>
@@ -62,6 +53,27 @@ import TabItem from "@shComponents/Tab/TabItem.astro";
     </ol>
   </Step>
 </Steps>
+````
+
+  </TabItem>
+
+  <TabItem label="渲染效果" defaultOpen>
+
+    <Steps start={3}>
+      <Step title="第一步">這是第一步的描述</Step>
+      <Step title="第二步">這是第二步的描述</Step>
+      <Step title="第三步">
+        這是第三步的描述，你可以在這裡添加更多的內容來說明這一步驟。
+        <ol>
+          <li>這是一個清單，對你可以用清單</li>
+          <li>但是必須手動添加 HTML 標籤哦</li>
+        </ol>
+      </Step>
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
 
 這將會渲染一個包含三個步驟的指示器，每個步驟都有標題和描述。你可以根據需要添加更多的步驟，或者自定義每個步驟的內容。
 
@@ -87,26 +99,11 @@ import TabItem from "@shComponents/Tab/TabItem.astro";
   | `<File />` | `icon` | FileIconType | 指定檔案圖示的類型（預設為`normal`，所有選項請參考下方資訊）。 |
   | `<File />` | `highlighted` | boolean | 指定檔案是否高亮顯示（可選，預設為`False`。請注意，高亮檔案並不會因而將父資料夾一同高亮。如需高亮資料夾，請在 `<Folder />` 上使用 `highlighted` 屬性）。 |
 
-```astro
-<Files path="/sh-blog-next/">
-  <Folder name="app" defaultOpen>
-    <File name="layout.tsx" icon="code" />
-    <File name="page.tsx" />
-    <File name="global.css" highlighted />
-  </Folder>
-  <Folder name="components" highlighted>
-    <File name="button.tsx" icon="code" />
-    <File name="tabs.tsx" />
-    <File name="dialog.tsx" highlighted />
-    <Folder name="core">
-      <File name="Header.astro" />
-      <File name="Footer.astro" />
-    </Folder>
-  </Folder>
-  <File name="package.json" />
-</Files>
-```
+<Tabs>
 
+  <TabItem label="程式碼">
+
+````astro
 <Files path="/sh-blog-next/">
   <Folder name="app" defaultOpen>
     <File name="layout.tsx" icon="code" />
@@ -124,64 +121,103 @@ import TabItem from "@shComponents/Tab/TabItem.astro";
   </Folder>
   <File name="package.json" />
 </Files>
+````
+
+  </TabItem>
+
+  <TabItem label="渲染效果" defaultOpen>
+
+    <Files path="/sh-blog-next/">
+      <Folder name="app" defaultOpen>
+        <File name="layout.tsx" icon="code" />
+        <File name="page.tsx" />
+        <File name="global.css" highlighted />
+      </Folder>
+      <Folder name="components" highlighted>
+        <File name="button.tsx" icon="code" />
+        <File name="tabs.tsx" />
+        <File name="dialog.tsx" highlighted />
+        <Folder name="core">
+          <File name="Header.astro" />
+          <File name="Footer.astro" />
+        </Folder>
+      </Folder>
+      <File name="package.json" />
+    </Files>
+
+  </TabItem>
+
+</Tabs>
 
 以下是所有可用的圖示：
 
-```astro
-<Files>
-  <Folder name="Development" defaultOpen>
-    <File name="source_code.ts" icon="code" />
-    <File name="config.yaml" icon="config" />
-    <File name="script.sh" icon="terminal" />
-    <File name="compiled.bin" icon="binary" />
-  </Folder>
-  <Folder name="Media Assets" defaultOpen>
-    <File name="background.png" icon="image" />
-    <File name="podcast.mp3" icon="audio" />
-    <File name="tutorial.mp4" icon="video" />
-    <File name="model_3d.obj" icon="3d" />
-  </Folder>
-  <Folder name="Documents">
-    <File name="report.pdf" icon="document" />
-    <File name="data_sheet.xlsx" icon="sheet" />
-    <File name="ssl_cert.crt" icon="certificate" />
-    <File name="private.key" icon="key" />
-  </Folder>
-  <Folder name="System & Others" defaultOpen>
-    <File name="backup.zip" icon="archive" />
-    <File name="scanner_output.pdf" icon="scan" />
-    <File name="unknown_file" icon="not-found" />
-    <File name="regular_note.txt" icon="normal" />
-  </Folder>
-</Files>
-```
+<Tabs>
 
-<Files>
-  <Folder name="Development" defaultOpen>
-    <File name="source_code.ts" icon="code" />
-    <File name="config.yaml" icon="config" />
-    <File name="script.sh" icon="terminal" />
-    <File name="compiled.bin" icon="binary" />
-  </Folder>
-  <Folder name="Media Assets" defaultOpen>
-    <File name="background.png" icon="image" />
-    <File name="podcast.mp3" icon="audio" />
-    <File name="tutorial.mp4" icon="video" />
-    <File name="model_3d.obj" icon="3d" />
-  </Folder>
-  <Folder name="Documents">
-    <File name="report.pdf" icon="document" />
-    <File name="data_sheet.xlsx" icon="sheet" />
-    <File name="ssl_cert.crt" icon="certificate" />
-    <File name="private.key" icon="key" />
-  </Folder>
-  <Folder name="System & Others" defaultOpen>
-    <File name="backup.zip" icon="archive" />
-    <File name="scanner_output.pdf" icon="scan" />
-    <File name="unknown_file" icon="not-found" />
-    <File name="regular_note.txt" icon="normal" />
-  </Folder>
-</Files>
+  <TabItem label="程式碼">
+
+    ````astro
+    <Files>
+      <Folder name="Development" defaultOpen>
+        <File name="source_code.ts" icon="code" />
+        <File name="config.yaml" icon="config" />
+        <File name="script.sh" icon="terminal" />
+        <File name="compiled.bin" icon="binary" />
+      </Folder>
+      <Folder name="Media Assets" defaultOpen>
+        <File name="background.png" icon="image" />
+        <File name="podcast.mp3" icon="audio" />
+        <File name="tutorial.mp4" icon="video" />
+        <File name="model_3d.obj" icon="3d" />
+      </Folder>
+      <Folder name="Documents">
+        <File name="report.pdf" icon="document" />
+        <File name="data_sheet.xlsx" icon="sheet" />
+        <File name="ssl_cert.crt" icon="certificate" />
+        <File name="private.key" icon="key" />
+      </Folder>
+      <Folder name="System & Others" defaultOpen>
+        <File name="backup.zip" icon="archive" />
+        <File name="scanner_output.pdf" icon="scan" />
+        <File name="unknown_file" icon="not-found" />
+        <File name="regular_note.txt" icon="normal" />
+      </Folder>
+    </Files>
+    ````
+
+  </TabItem>
+
+  <TabItem label="渲染效果" defaultOpen>
+
+    <Files>
+      <Folder name="Development" defaultOpen>
+        <File name="source_code.ts" icon="code" />
+        <File name="config.yaml" icon="config" />
+        <File name="script.sh" icon="terminal" />
+        <File name="compiled.bin" icon="binary" />
+      </Folder>
+      <Folder name="Media Assets" defaultOpen>
+        <File name="background.png" icon="image" />
+        <File name="podcast.mp3" icon="audio" />
+        <File name="tutorial.mp4" icon="video" />
+        <File name="model_3d.obj" icon="3d" />
+      </Folder>
+      <Folder name="Documents" defaultOpen>
+        <File name="report.pdf" icon="document" />
+        <File name="data_sheet.xlsx" icon="sheet" />
+        <File name="ssl_cert.crt" icon="certificate" />
+        <File name="private.key" icon="key" />
+      </Folder>
+      <Folder name="System & Others" defaultOpen>
+        <File name="backup.zip" icon="archive" />
+        <File name="scanner_output.pdf" icon="scan" />
+        <File name="unknown_file" icon="not-found" />
+        <File name="regular_note.txt" icon="normal" />
+      </Folder>
+    </Files>
+
+  </TabItem>
+
+</Tabs>
 
 ## GitHub 卡片
 
@@ -193,33 +229,49 @@ import TabItem from "@shComponents/Tab/TabItem.astro";
   | `repo` | string | 指定要顯示的 GitHub 倉庫，格式為 `username/repository` 或 `https://github.com/username/repository`。 |
   | `class` | string | 額外的 CSS Class，可以用來自定義 GitHub 卡片的樣式。 |
 
-:::danger[危險]
+:::important[重要]
 請注意，如需使用 GitHub 卡片組件，必須在環境變數 `GITHUB_TOKEN` 中設定一個可使用的[GitHub Personal Access Token](https://github.com/settings/personal-access-tokens)。
 :::
 
 以下是一個 GitHub 卡片的範例，展示了如何使用 `GithubCard` 組件來顯示 GitHub 倉庫的資訊：
 
-```astro
-<GithubCard repo="510208/sh-blog-next" />
-```
+<Tabs>
 
-<GithubCard repo="510208/sh-blog-next" />
+  <TabItem label="程式碼">
+
+    ````astro
+    <GithubCard repo="510208/sh-blog-next" />
+    ````
+
+  </TabItem>
+
+  <TabItem label="渲染效果" defaultOpen>
+
+    <GithubCard repo="510208/sh-blog-next" />
+
+  </TabItem>
+
+</Tabs>
 
 以下是一個已被封存的儲存庫：
 
-```astro
-<GithubCard repo="https://github.com/510208/MD5Hashing-NEW" />
-```
+<Tabs>
 
-<GithubCard repo="https://github.com/510208/MD5Hashing-NEW" />
+  <TabItem label="程式碼">
 
-以下是一個不存在的儲存庫：
+    ````astro
+    <GithubCard repo="https://github.com/510208/MD5Hashing-NEW" />
+    ````
 
-```astro
-<GithubCard repo="https://github.com/510208/ThisRepoDoesNotExist" />
-```
+  </TabItem>
 
-<GithubCard repo="https://github.com/510208/ThisRepoDoesNotExist" />
+  <TabItem label="渲染效果" defaultOpen>
+
+    <GithubCard repo="https://github.com/510208/MD5Hashing-NEW" />
+
+  </TabItem>
+
+</Tabs>
 
 ## 分頁
 
@@ -236,217 +288,331 @@ import TabItem from "@shComponents/Tab/TabItem.astro";
   | `<TabItem />` | `label` | string | 分頁的標籤名稱，將顯示在分頁標籤上。 |
   | `<TabItem />` | `class` | string | 額外的 CSS Class，可以用來自定義分頁項目的樣式。 |
 
-<Tabs>
-  <TabItem label="Javascript">
-
-    ```javascript
-    console.log("Hello World in Javascript");
-    ```
-
-  </TabItem>
-
-  <TabItem label="Rust">
-    
-    ```rust
-    fn main() {
-        println!("Hello World in Rust");
-    }
-    ```
-
-  </TabItem>
-
-  <TabItem label="Typescript">
-    
-    ```typescript
-    console.log("Hello World in Typescript");
-    ```
-
-  </TabItem>
-
-  <TabItem label="Python">
-    
-    ```python
-    print("Hello World in Python")
-    ```
-
-  </TabItem>
-
-  <TabItem label="Go" defaultOpen>
-    
-    ```go
-    package main
-
-    import "fmt"
-
-    func main() {
-        fmt.Println("Hello World in Go")
-    }
-    ```
-
-  </TabItem>
-
-  <TabItem label="C++">
-    
-    ```cpp
-    #include <iostream>
-
-    int main() {
-        std::cout << "Hello World in C++" << std::endl;
-        return 0;
-    }
-    ```
-
-  </TabItem>
-
-  <TabItem label="Java">
-    
-    ```java
-    public class HelloWorld {
-        public static void main(String[] args) {
-            System.out.println("Hello World in Java");
-        }
-    }
-    ```
-
-  </TabItem>
-
-  <TabItem label="C#">
-    
-    ```csharp
-    using System;
-
-    class Program {
-        static void Main() {
-            Console.WriteLine("Hello World in C#");
-        }
-    }
-    ```
-
-  </TabItem>
-
-  <TabItem label="PHP">
-    
-    ```php
-    <?php
-    echo "Hello World in PHP";
-    ?>
-    ```
-
-  </TabItem>
-
-  <TabItem label="Ruby">
-    
-    ```ruby
-    puts "Hello World in Ruby"
-    ```
-
-  </TabItem>
-
-  <TabItem label="Swift">
-    
-    ```swift
-    print("Hello World in Swift")
-    ```
-
-  </TabItem>
-
-  <TabItem label="Kotlin">
-
-    ```kotlin
-      fun main() {
-        println("Hello World in Kotlin")
-      }
-    ```
-
-  </TabItem>
-
-  <TabItem label="Dart">
-    
-    ```dart
-    void main() {
-      print("Hello World in Dart");
-    }
-    ```
-
-  </TabItem>
-
-  <TabItem label="Visual Basic">
-    
-    ```vb
-      Module Module1
-          Sub Main()
-              Console.WriteLine("Hello World")
-              Console.WriteLine("This is the first VB.Net Application.")
-              Console.ReadKey()
-          End Sub
-      End Module
-    ```
-
-  </TabItem>
-</Tabs>
+你可以使用 `Tabs` 和 `TabItem` 組件來創建一個分頁組件，這對於展示多個相關內容非常有用。
 
 <Tabs>
-  <TabItem label="Javascript" defaultOpen>
 
-    ```javascript
-    console.log("Hello World in Javascript");
-    ```
+  <TabItem label="程式碼">
+
+    ````astro
+    <Tabs>
+      <TabItem label="Javascript">
+
+        ```javascript
+        console.log("Hello World in Javascript");
+        ```
+
+      </TabItem>
+
+      <TabItem label="Rust">
+
+        ```rust
+        fn main() {
+            println!("Hello World in Rust");
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="Typescript">
+
+        ```typescript
+        console.log("Hello World in Typescript");
+        ```
+
+      </TabItem>
+
+      {/* 你可以繼續添加更多的 TabItem 來展示不同的內容 */}
+
+      <TabItem label="Go" defaultOpen>
+        
+        ```go
+        package main
+
+        import "fmt"
+
+        func main() {
+            fmt.Println("Hello World in Go")
+        }
+        ```
+
+      </TabItem>
+
+      {/* 你可以繼續添加更多的 TabItem 來展示不同的內容 */}
+    </Tabs>
+    ````
 
   </TabItem>
 
-  <TabItem label="Rust" defaultOpen>
-    
-    ```rust
-    fn main() {
-        println!("Hello World in Rust");
-    }
-    ```
+  <TabItem label="渲染效果" defaultOpen>
+
+    <Tabs>
+      <TabItem label="Javascript">
+
+        ```javascript
+        console.log("Hello World in Javascript");
+        ```
+
+      </TabItem>
+
+      <TabItem label="Rust">
+        
+        ```rust
+        fn main() {
+            println!("Hello World in Rust");
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="Typescript">
+        
+        ```typescript
+        console.log("Hello World in Typescript");
+        ```
+
+      </TabItem>
+
+      <TabItem label="Python">
+        
+        ```python
+        print("Hello World in Python")
+        ```
+
+      </TabItem>
+
+      <TabItem label="Go" defaultOpen>
+        
+        ```go
+        package main
+
+        import "fmt"
+
+        func main() {
+            fmt.Println("Hello World in Go")
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="C++">
+        
+        ```cpp
+        #include <iostream>
+
+        int main() {
+            std::cout << "Hello World in C++" << std::endl;
+            return 0;
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="Java">
+        
+        ```java
+        public class HelloWorld {
+            public static void main(String[] args) {
+                System.out.println("Hello World in Java");
+            }
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="C#">
+        
+        ```csharp
+        using System;
+
+        class Program {
+            static void Main() {
+                Console.WriteLine("Hello World in C#");
+            }
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="PHP">
+        
+        ```php
+        <?php
+        echo "Hello World in PHP";
+        ?>
+        ```
+
+      </TabItem>
+
+      <TabItem label="Ruby">
+        
+        ```ruby
+        puts "Hello World in Ruby"
+        ```
+
+      </TabItem>
+
+      <TabItem label="Swift">
+        
+        ```swift
+        print("Hello World in Swift")
+        ```
+
+      </TabItem>
+
+      <TabItem label="Kotlin">
+
+        ```kotlin
+          fun main() {
+            println("Hello World in Kotlin")
+          }
+        ```
+
+      </TabItem>
+
+      <TabItem label="Dart">
+        
+        ```dart
+        void main() {
+          print("Hello World in Dart");
+        }
+        ```
+
+      </TabItem>
+
+      <TabItem label="Visual Basic">
+        
+        ```vb
+          Module Module1
+              Sub Main()
+                  Console.WriteLine("Hello World")
+                  Console.WriteLine("This is the first VB.Net Application.")
+                  Console.ReadKey()
+              End Sub
+          End Module
+        ```
+
+      </TabItem>
+    </Tabs>
 
   </TabItem>
+
 </Tabs>
+
+:::danger[危險]
+
+如果你在同一個`<Tabs>`組件中同時使用了`defaultOpen`屬性，系統將會跳出錯誤，如下範例所示。
+
+<Tabs>
+
+  <TabItem label="程式碼">
+
+    ````astro
+      <Tabs>
+        <TabItem label="Javascript" defaultOpen>
+
+          ```javascript
+          console.log("Hello World in Javascript");
+          ```
+
+        </TabItem>
+
+        <TabItem label="Rust" defaultOpen>
+          
+          ```rust
+          fn main() {
+              println!("Hello World in Rust");
+          }
+          ```
+
+        </TabItem>
+      </Tabs>
+    ````
+
+  </TabItem>
+
+  <TabItem label="渲染效果" defaultOpen>
+
+    <Tabs>
+      <TabItem label="Javascript" defaultOpen>
+
+        ```javascript
+        console.log("Hello World in Javascript");
+        ```
+
+      </TabItem>
+
+      <TabItem label="Rust" defaultOpen>
+        
+        ```rust
+        fn main() {
+            println!("Hello World in Rust");
+        }
+        ```
+
+      </TabItem>
+    </Tabs>
+
+  </TabItem>
+
+</Tabs>
+
+:::
 
 ## 提示區塊
 
 > 提示區塊已經被集成進 Markdown 解析器中，你可以直接使用 Markdown 的語法來創建提示區塊。
 
-```markdown
-:::note[筆記]
-Highlights information that users should take into account, even when skimming.
-:::
+<Tabs>
 
-:::tip[提示]
-Optional information to help a user be more successful.
-:::
+  <TabItem label="程式碼">
 
-:::important[重要]
-Important information for a user to know.
-:::
+    ````markdown
+    :::note[筆記]
+    Highlights information that users should take into account, even when skimming.
+    :::
 
-:::danger[危險]
-Serious and/or dangerous situations.
-:::
+    :::tip[提示]
+    Optional information to help a user be more successful.
+    :::
 
-:::caution[小心]
-Negative potential consequences of an action.
-:::
-```
+    :::important[重要]
+    Important information for a user to know.
+    :::
 
-:::note[筆記]
-Highlights information that users should take into account, even when skimming.
-:::
+    :::danger[危險]
+    Serious and/or dangerous situations.
+    :::
 
-:::tip[提示]
-Optional information to help a user be more successful.
-:::
+    :::caution[小心]
+    Negative potential consequences of an action.
+    :::
+    ````
 
-:::important[重要]
-Important information for a user to know.
-:::
+  </TabItem>
 
-:::danger[危險]
-Serious and/or dangerous situations.
-:::
+  <TabItem label="渲染效果" defaultOpen>
 
-:::caution[小心]
-Negative potential consequences of an action.
-:::
+    :::note[筆記]
+    Highlights information that users should take into account, even when skimming.
+    :::
+
+    :::tip[提示]
+    Optional information to help a user be more successful.
+    :::
+
+    :::important[重要]
+    Important information for a user to know.
+    :::
+
+    :::danger[危險]
+    Serious and/or dangerous situations.
+    :::
+
+    :::caution[小心]
+    Negative potential consequences of an action.
+    :::
+
+  </TabItem>
+
+</Tabs>
