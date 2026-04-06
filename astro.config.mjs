@@ -10,6 +10,7 @@ import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import remarkSpoiler from "./src/plugins/remark-spoiler.js";
+import { remarkCitation } from "./src/plugins/remark-citation.mjs";
 
 // @ts-ignore
 import rehypeCodeBlock from "./src/plugins/rehype-code-block.mjs";
@@ -93,6 +94,7 @@ export default defineConfig({
       remarkDirective,
       remarkSectionize,
       remarkSpoiler,
+      remarkCitation,
     ],
     rehypePlugins: [
       rehypeSlug,
