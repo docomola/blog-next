@@ -40,9 +40,16 @@ const isProd = import.meta.env.PROD;
 
   <BaseMainContent>
     <div class="flex-1" data-pf-theme="dark">
-      <pagefind-input placeholder="今天要搜些什麼？" autofocus></pagefind-input>
+      <div class="mb-4 flex justify-between">
+        <pagefind-input placeholder="今天要搜些什麼？" autofocus></pagefind-input>
+      </div>
 
-      <pagefind-results></pagefind-results>
+      <pagefind-results show-images></pagefind-results>
+
+      <div class="mt-4 flex items-center justify-between">
+        <pagefind-summary></pagefind-summary>
+        <pagefind-keyboard-hints></pagefind-keyboard-hints>
+      </div>
     </div>
 
     <!-- Sidebar -->
