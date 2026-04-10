@@ -59,6 +59,16 @@ const isProd = import.meta.env.PROD;
   </BaseMainContent>
 </BaseLayout>
 
+<script is:inline>
+  // 載入時自動聚焦搜尋框
+  window.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector('input.pf-input');
+    if (input && input.tagName === 'INPUT') {
+      input.focus();
+    }
+  });
+</script>
+
 <script>
   import { getInstanceManager } from '@pagefind/component-ui';
 
