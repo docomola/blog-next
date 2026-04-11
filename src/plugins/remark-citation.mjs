@@ -32,16 +32,31 @@ export function remarkCitation() {
         node.children.splice(childrenToRemove[i], 1);
       }
 
-      // 2. 將收集到的所有出處組合成 HTML 注入
+      // 2. 將收集到的所有出處組合成結構化節點，避免直接注入 HTML 字串
       if (citations.length > 0) {
-        // 使用 <cite> 並換行顯示多個出處
-        const htmlValue = citations
-          .map((text) => `<cite class="blockquote-citation">${text}</cite>`)
-          .join("");
-
         node.children.push({
-          type: "html",
-          value: `<div class="citation-wrapper">${htmlValue}</div>`,
+          type: "citationWrapper",
+          data: {
+            hName: "div",
+            hProperties: {
+              className: ["citation-wrapper"],
+            },
+          },
+          children: citations.map((text) => ({
+            type: "citation",
+            data: {
+              hName: "cite",
+              hProperties: {
+                className: ["blockquote-citation"],
+              },
+            },
+            children: [
+              {
+                type: "text",
+                value: text,
+              },
+            ],
+          })),
         });
       }
     });
