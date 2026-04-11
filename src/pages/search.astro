@@ -20,11 +20,22 @@ const isProd = import.meta.env.PROD;
   {
     isProd ? (
       <>
-        <script src="/pagefind/pagefind-component-ui.js" type="module" />
+        <link
+          slot="head"
+          href="/pagefind/pagefind-component-ui.css"
+          rel="stylesheet"
+        />
+        <script
+          slot="head"
+          src="/pagefind/pagefind-component-ui.js"
+          type="module"
+        />
       </>
     ) : (
-      <script>import('@pagefind/component-ui');</script>
-      <pagefind-config bundle-path="/pagefind/" /> 
+      <>
+        <script slot="head">import('@pagefind/component-ui');</script>
+        <pagefind-config bundle-path="/pagefind/" />
+      </>
     )
   }
 
@@ -38,7 +49,7 @@ const isProd = import.meta.env.PROD;
   </Hero>
 
   <BaseMainContent>
-    <div class="flex-1 min-w-0 max-w-full" id="sh-search">
+    <div class="max-w-full min-w-0 flex-1" id="sh-search">
       <pagefind-input placeholder="今天要搜些什麼？" autofocus></pagefind-input>
 
       <div class="mt-4" id="sh-search-results">
@@ -60,26 +71,26 @@ const isProd = import.meta.env.PROD;
 
 <script is:inline>
   // 載入時自動聚焦搜尋框
-  window.addEventListener('DOMContentLoaded', () => {
-    const input = document.querySelector('input.pf-input');
-    if (input && input.tagName === 'INPUT') {
+  window.addEventListener("DOMContentLoaded", () => {
+    const input = document.querySelector("input.pf-input");
+    if (input && input.tagName === "INPUT") {
       input.focus();
     }
   });
 </script>
 
 <script>
-  import { getInstanceManager } from '@pagefind/component-ui';
+  import { getInstanceManager } from "@pagefind/component-ui";
 
   // 檢查是否有網址參數 ?q=，如果有就自動填入搜尋框並觸發搜尋
   const urlParams = new URLSearchParams(window.location.search);
-  const query = urlParams.get('q');
+  const query = urlParams.get("q");
 
   if (query) {
-    const input = document.querySelector('input.pf-input') as HTMLInputElement;
-    if (input && input.tagName === 'INPUT') {
+    const input = document.querySelector("input.pf-input") as HTMLInputElement;
+    if (input && input.tagName === "INPUT") {
       input.value = query;
-      
+
       const instance = getInstanceManager().getInstance("default");
       instance?.triggerSearch(query);
     }
@@ -101,7 +112,7 @@ const isProd = import.meta.env.PROD;
     --pf-mark: var(--primary);
 
     /* Error states */
-    --pf-error-bg: color-mix(in oklab, var(--color-red-50) 10%, transparent);;
+    --pf-error-bg: color-mix(in oklab, var(--color-red-50) 10%, transparent);
     --pf-error-border: var(--color-red-500);
     --pf-error-text: var(--color-red-500);
     --pf-error-text-secondary: var(--color-red-600);
