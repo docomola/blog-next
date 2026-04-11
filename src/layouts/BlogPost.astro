@@ -90,16 +90,21 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
             <span data-pagefind-filter="author">{config.author.name}</span>
           </div>
         </div>
-        <div class="mb-4 flex gap-2" data-pagefind-ignore>
-          <!-- 文章標籤 -->
-          <div
-            class="flex items-center gap-1 text-sm text-gray-500"
-            data-pagefind-meta={`tags:${tags?.join(",")}`}
-          >
-            <Tag size={20} />{i18n(I18nKey.post_tags)}{" "}
-            <Tags tags={tags} />
-          </div>
-        </div>
+
+        <!-- 文章標籤 -->
+        {
+          tags && tags.length > 0 && (
+            <div class="mb-4 flex gap-2" data-pagefind-ignore>
+              <div
+                class="flex items-center gap-1 text-sm text-gray-500"
+                data-pagefind-meta={`tags:${tags.join(",")}`}
+              >
+                <Tag size={20} />
+                {i18n(I18nKey.post_tags)} <Tags tags={tags} />
+              </div>
+            </div>
+          )
+        }
       </div>
 
       <!-- 文章圖片 -->
