@@ -179,3 +179,16 @@ const { title, description, pubDate, updatedDate, heroImage, headings, tags } =
     }
   });
 </script>
+
+<script>
+  import mediumZoom from "medium-zoom";
+
+  // 初始化 medium-zoom
+  mediumZoom("[data-zoomable]", {
+    margin: 24,
+    background: "rgba(0, 0, 0, 0.8)",
+    scrollOffset: 40,
+  });
+
+  // console.log("[Medium Zoom] ImagePacked component loaded");
+</script>
